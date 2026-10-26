@@ -1,0 +1,12 @@
+# 本地工具与隐私/缓存数据，不入库
+.workbuddy/
+.mimosa/
+.ai-memory/
+node_modules/
+
+# 微信私有配置（含本地设置，非源码）
+project.private.config.json
+
+# 备份文件
+*.bak
+.DS_Store

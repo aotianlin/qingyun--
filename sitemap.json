@@ -1,0 +1,4 @@
+{
+  "desc": "青云 2.0 V4 真机预览",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

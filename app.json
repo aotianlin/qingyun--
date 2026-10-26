@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/discover/discover",
+    "pages/circles/circles",
+    "pages/messages/messages",
+    "pages/ai/ai",
+    "pages/mine/mine",
+    "pages/circle-detail/circle-detail",
+    "pages/circles-all/circles-all",
+    "pages/dm/dm",
+    "pages/notifications/notifications",
+    "pages/qa/qa",
+    "pages/chat/chat",
+    "pages/post-create/post-create",
+    "pages/resource-upload/resource-upload",
+    "pages/checkin/checkin",
+    "pages/checkin-detail/checkin-detail",
+    "pages/checkin-create/checkin-create",
+    "pages/resources/resources",
+    "pages/resource-detail/resource-detail",
+    "pages/user/user",
+    "pages/follows/follows",
+    "pages/favorites/favorites",
+    "pages/my-resources/my-resources",
+    "pages/space-create/space-create",
+    "pages/profile-edit/profile-edit",
+    "pages/drafts/drafts",
+    "pages/settings/settings",
+    "pages/login/login"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundColor": "#EAE3DE",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
