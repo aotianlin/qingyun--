@@ -1,0 +1,79 @@
+<scroll-view scroll-y class="mine-page" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">个人中心</text>
+  </view>
+
+  <view class="idcard rise" style="--i:1;background:{{meBg}}">
+    <image wx:if="{{meBgUrl}}" class="idcard-bgimg" src="{{meBgUrl}}" mode="aspectFill"/>
+    <view class="id-edit" hover-class="press-sm" bind:tap="goEdit">✎ 编辑资料</view>
+    <view class="icu-17 arcs"/>
+    <view class="id-scape"/>
+    <view class="id-crane"/>
+    <view class="id-crane far"/>
+    <view class="row1">
+      <view class="bigava">
+        <image wx:if="{{avatarUrl}}" class="bigava-img" src="{{avatarUrl}}" mode="aspectFill"/>
+        <text wx:else>{{meCh}}</text>
+      </view>
+      <view><view class="_h2">{{meName}}</view><view class="meta _p">计算机学院 · 软件工程 · 大三</view><text class="sid">学号 20231001</text></view>
+    </view>
+    <view class="stats">
+      <view class="sv"><text class="_b">86</text><text class="_s">关注</text></view>
+      <view class="sv"><text class="_b">132</text><text class="_s">粉丝</text></view>
+      <view class="sv"><text class="_b">19</text><text class="_s">动态</text></view>
+    </view>
+  </view>
+
+  <view class="heat rise" style="--i:2">
+    <view class="_h3 hh"><text class="hh1">坚持的痕迹</text><text class="_s">过去一年 365 天 · 连续 4 天</text></view>
+    <view class="ht-body">
+      <view class="ht-side">
+        <text class="_s" wx:for="{{rowLabels}}" wx:key="index">{{item}}</text>
+      </view>
+      <view class="ht-grid" style="display:flex">
+        <view class="ht-col" style="display:flex;flex-direction:column" wx:for="{{rows}}" wx:for-item="col" wx:for-index="ci" wx:key="ci">
+          <view class="ht-c {{lvl}}" wx:for="{{col}}" wx:for-item="lvl" wx:for-index="ri" wx:key="ri"></view>
+        </view>
+      </view>
+    </view>
+    <view class="ht-x">
+      <text class="_s" wx:for="{{colLabels}}" wx:key="index">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="sec-title rise" style="--i:3"><text class="_b">成就墙</text><text class="_s">4 / 6</text></view>
+  <scroll-view scroll-x class="hscroll rise" style="--i:4">
+    <view class="ach-scroll">
+      <view class="ach" hover-class="press-sm">
+        <view class="medal"><view class="icu-18"/></view>
+        <text class="_b">精华作者</text><text class="_s">帖子被加精</text>
+      </view>
+      <view class="ach" hover-class="press-sm">
+        <view class="medal"><view class="icu-19"/></view>
+        <text class="_b">七日之约</text><text class="_s">连续打卡 7 天</text>
+      </view>
+      <view class="ach" hover-class="press-sm">
+        <view class="medal"><view class="icu-20"/></view>
+        <text class="_b">资源共享者</text><text class="_s">下载满 100 次</text>
+      </view>
+      <view class="ach lock" hover-class="press-sm">
+        <view class="medal"><view class="icu-21"/></view>
+        <text class="_b">三十而立</text><text class="_s">累计 30 天</text>
+      </view>
+      <view class="ach lock" hover-class="press-sm">
+        <view class="medal"><view class="icu-22"/></view>
+        <text class="_b">校园红人</text><text class="_s">100 位关注者</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="mlist rise" style="--i:5">
+    <view class="mrow" hover-class="press" bind:tap="goPage" data-u="/pages/favorites/favorites"><view class="icu-23"/>我的收藏<text class="arr"><view class="icu-24"/></text></view>
+    <view class="mrow" hover-class="press" bind:tap="goPage" data-u="/pages/my-resources/my-resources"><view class="icu-25"/>我的资料<text class="arr"><view class="icu-24"/></text></view>
+    <view class="mrow" hover-class="press" bind:tap="goPage" data-u="/pages/drafts/drafts"><view class="icu-26"/>草稿箱<text class="arr"><text wx:if="{{draftCount}}" class="mrow-badge">{{draftCount}}</text><view class="icu-24"/></text></view>
+    <view class="mrow" hover-class="press" bind:tap="goPage" data-u="/pages/settings/settings"><view class="icu-27"/>设置<text class="arr"><view class="icu-24"/></text></view>
+  </view>
+</scroll-view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

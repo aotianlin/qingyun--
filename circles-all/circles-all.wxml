@@ -1,0 +1,57 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">全部圈子</text>
+  </view>
+  <view class="rise sd-host" style="--i:1;padding:12px 16px 0">
+    <view wx:if="{{!searchOpen}}" class="nebula" bind:tap="openSearch">
+      <view class="nb-in nb-static"><text class="nb-label">搜圈子 · 课程 · 兴趣</text></view>
+    </view>
+    <view wx:else class="nebula on nb-live">
+      <input class="nb-in" value="{{kw}}" bindinput="onKw" bindconfirm="runSearch" confirm-type="search" bindfocus="onNbF" bindblur="onNbB" placeholder="搜圈子 · 课程 · 兴趣" placeholder-class="nb-ph2"/>
+      <block wx:if="{{sdFocus}}">
+        <view class="nb-p" style="--x:.2;--y:-.4;--delay:.1s"/>
+          <view class="nb-p" style="--x:.5;--y:-.2;--delay:.3s"/>
+          <view class="nb-p" style="--x:.3;--y:.3;--delay:.5s"/>
+          <view class="nb-p" style="--x:.7;--y:.1;--delay:.2s"/>
+          <view class="nb-p" style="--x:.1;--y:-.7;--delay:.4s"/>
+          <view class="nb-p" style="--x:.6;--y:.4;--delay:.6s"/>
+      </block>
+    </view>
+  </view>
+
+    <view class="sd-mask {{searchOpen ? 'show' : ''}}" bind:tap="closeSearch"></view>
+    <view class="sd-panel {{searchOpen ? 'show' : ''}}" style="top:{{sdTop}}px">
+      <block wx:if="{{!kw}}">
+        <view class="sd-hd"><text class="_b">热门搜索</text><text class="_s">实时</text></view>
+        <view class="sd-chips">
+          <view class="sd-chip" hover-class="press-sm" wx:for="{{sdHot}}" wx:key="*this" bind:tap="onHot" data-k="{{item}}">🔥 {{item}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="sd-hd"><text class="_b">“{{kw}}”</text><text class="_s">{{count}} 条结果</text></view>
+        <scroll-view scroll-y class="sd-scroll">
+          <view class="sd-sec" wx:if="{{rCircles.length}}"><view class="sd-sec-t">圈子</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rCircles}}" wx:key="k" bind:tap="goCircle" data-k="{{item.k}}"><view class="sd-r-th" style="background:{{item.bg}};color:#fff">{{item.ch}}</view><view><view class="sd-r-t">{{item.name}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view wx:if="{{!count}}" class="sd-empty">没有找到“{{kw}}”相关内容</view>
+        </scroll-view>
+      </block>
+    </view>
+
+  <view class="all-chips rise" style="--i:2">
+    <view hover-class="press-sm" class="chip {{allCat === item ? 'on' : ''}}" wx:for="{{cats}}" wx:key="*this" bind:tap="onCat" data-c="{{item}}">{{item}}</view>
+  </view>
+  <view class="cd-empty rise" hover-class="press-sm" style="--i:3;margin:0 20px 12px" bind:tap="goCreate">＋ 创建圈子</view>
+  <view class="all-list rise" style="--i:4">
+      <view class="ac-row" hover-class="press" wx:for="{{rows}}" wx:key="k" bind:tap="goCircle" data-k="{{item.k}}">
+        <view class="ac-ava" style="background:{{item.bg}}">{{item.ch}}</view>
+        <view class="ac-main">
+          <text class="_b">{{item.name}}</text>
+          <view class="acp _p">{{item.desc}}</view>
+          <text class="_s" style="font-size:11px;color:var(--text3)">{{item.stat}}</text>
+        </view>
+        <view class="ac-join {{item.joined ? 'joined' : ''}}" hover-class="press-sm" catch:tap="toggleJoin" data-k="{{item.k}}">{{item.joined ? "已加入" : "加入"}}</view>
+      </view>
+    </view>
+</scroll-view>

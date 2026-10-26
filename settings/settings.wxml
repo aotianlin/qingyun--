@@ -1,0 +1,67 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">设置</text>
+  </view>
+
+  <view class="st-user rise" style="--i:1">
+    <view class="st-ava">{{me.ch}}</view>
+    <view class="st-uinfo">
+      <text class="_b">{{me.name}}</text>
+      <text class="_s">计算机学院 · 软件工程 · 2024 级</text>
+    </view>
+  </view>
+
+  <view class="sec-title rise" style="--i:2"><text class="_b">消息通知</text></view>
+  <view class="st-group rise" style="--i:2">
+    <view class="st-row"><text class="st-label">点赞与收藏</text><switch class="st-sw" checked="{{settings.like}}" color="#175A67" data-k="like" bindchange="onSwitch"/></view>
+    <view class="st-row"><text class="st-label">评论与回复</text><switch class="st-sw" checked="{{settings.comment}}" color="#175A67" data-k="comment" bindchange="onSwitch"/></view>
+    <view class="st-row"><text class="st-label">新增关注</text><switch class="st-sw" checked="{{settings.follow}}" color="#175A67" data-k="follow" bindchange="onSwitch"/></view>
+    <view class="st-row st-row-last"><text class="st-label">私信消息</text><switch class="st-sw" checked="{{settings.dm}}" color="#175A67" data-k="dm" bindchange="onSwitch"/></view>
+  </view>
+
+  <view class="sec-title rise" style="--i:3"><text class="_b">隐私</text></view>
+  <view class="st-group rise" style="--i:3">
+    <picker mode="selector" range="{{dmScopes}}" value="{{settings.dmScope}}" bindchange="onDmScope">
+      <view class="st-row"><text class="st-label">谁能私信我</text><text class="st-val">{{dmScopes[settings.dmScope]}}</text><text class="st-arr"><view class="icu-24"/></text></view>
+    </picker>
+    <picker mode="selector" range="{{favScopes}}" value="{{settings.favScope}}" bindchange="onFavScope">
+      <view class="st-row"><text class="st-label">谁能看我的收藏</text><text class="st-val">{{favScopes[settings.favScope]}}</text><text class="st-arr"><view class="icu-24"/></text></view>
+    </picker>
+    <view class="st-row st-row-last"><text class="st-label">展示我的在线状态</text><switch class="st-sw" checked="{{settings.online}}" color="#175A67" data-k="online" bindchange="onSwitch"/></view>
+  </view>
+
+  <view class="sec-title rise" style="--i:4"><text class="_b">通用</text></view>
+  <view class="st-group rise" style="--i:4">
+    <view class="st-row" hover-class="press" bind:tap="clearCache"><text class="st-label">清理缓存</text><text class="st-val">{{cacheText}}</text><text class="st-arr"><view class="icu-24"/></text></view>
+    <view class="st-row st-row-last" hover-class="press" bind:tap="checkUpdate"><text class="st-label">检查更新</text><text class="st-val">{{version}}</text><text class="st-arr"><view class="icu-24"/></text></view>
+  </view>
+
+  <view class="sec-title rise" style="--i:5"><text class="_b">账号与安全</text></view>
+  <view class="st-group rise" style="--i:5">
+    <view class="st-row st-row-last" hover-class="press" bind:tap="changePassword"><text class="st-label">修改密码</text><text class="st-arr"><view class="icu-24"/></text></view>
+  </view>
+
+  <view class="sec-title rise" style="--i:6"><text class="_b">关于与帮助</text></view>
+  <view class="st-group rise" style="--i:6">
+    <view class="st-row" hover-class="press" bind:tap="openTerms"><text class="st-label">用户协议</text><text class="st-arr"><view class="icu-24"/></text></view>
+    <view class="st-row" hover-class="press" bind:tap="openPrivacy"><text class="st-label">隐私政策</text><text class="st-arr"><view class="icu-24"/></text></view>
+    <view class="st-row" hover-class="press" bind:tap="feedback"><text class="st-label">意见反馈</text><text class="st-arr"><view class="icu-24"/></text></view>
+    <view class="st-row st-row-last" hover-class="press" bind:tap="about"><text class="st-label">关于青云</text><text class="st-val">{{version}}</text><text class="st-arr"><view class="icu-24"/></text></view>
+  </view>
+
+  <view class="st-danger rise" style="--i:7" hover-class="press-sm" bind:tap="logout">退出登录</view>
+  <view class="st-foot">青云 · 校园学习社区 v{{version}}</view>
+</scroll-view>
+
+<page-container show="{{docOpen}}" position="bottom" overlay duration="260" bindafterleave="onDocClose">
+  <scroll-view scroll-y class="doc-sheet" catch:touchmove="noop">
+    <view class="doc-handle"></view>
+    <view class="doc-title">{{docTitle}}</view>
+    <view class="doc-body">
+      <view class="doc-p" wx:for="{{docBody}}" wx:key="*this">{{item}}</view>
+    </view>
+  </scroll-view>
+</page-container>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

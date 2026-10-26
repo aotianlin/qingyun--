@@ -1,0 +1,962 @@
+<body>
+<div class="phone">
+  <div class="stage" id="stage">
+
+    <!-- ============ 屏幕 1：发现 ============ -->
+    <section class="screen active" id="screen-discover">
+      <header class="page-head">
+        <div class="head-row">
+          <div>
+            <p class="greet-sub">10月24日 · 星期五</p>
+            <h1 class="greet-title">校园里的新鲜事</h1>
+          </div>
+          <!-- 右上角预留给微信原生胶囊按钮（分享 / 更多），不放自定义内容 -->
+        </div>
+        <div class="head-tools">
+          <div class="search-pill" onclick="toast('搜索：全文检索 帖子/资料/圈子/同学')">
+            <view class="icu-1"/>
+            搜帖子 · 资料 · 圈子 · 同学
+          </div>
+          <div class="ai-quick" onclick="switchTab('ai')" aria-label="问学伴">
+            <view class="icu-2"/>
+          </div>
+          <div class="avatar-btn" onclick="openMine()">林<i class="dot"></i></div>
+        </div>
+      </header>
+
+      <div class="ai-strip" onclick="switchTab('ai')">
+        <div class="orb"><view class="icu-3"/></div>
+        <div><b>青云学伴</b><span>「数据结构下周考，帮我排一个 3 天复习计划」</span></div>
+        <span class="go">问问 ›</span>
+      </div>
+
+      <div class="channels" id="channels">
+        <div class="chip on" data-f="all">推荐</div>
+        <div class="chip" data-f="qa">问答</div>
+        <div class="chip" data-f="doc">资料</div>
+        <div class="chip" data-f="chk">打卡</div>
+        <div class="chip" data-f="photo">生活</div>
+      </div>
+
+      <div class="falls" id="falls">
+        <div class="fcard photo" onclick="openDetail()">
+          <div class="cover-wrap">
+            <div class="tcover" style="height:150px;background:#FDF3E3">
+              <span class="deco" style="width:120px;height:120px;background:rgba(246,200,127,.4);right:-30px;bottom:-40px"></span>
+              <span class="deco" style="width:70px;height:70px;background:#F6C87F;right:26px;bottom:18px"></span>
+              <view class="icu-4"/>
+            </div>
+            <span class="badge hot">精华</span>
+          </div>
+          <div class="body"><div class="f-title">周五晚霞收容所｜宿舍楼天台实拍，六点半那场最好看</div>
+          <div class="f-meta"><span class="f-count">286 赞 · 42 评论</span></div></div>
+        </div>
+        <div class="fcard photo" onclick="openDetail()">
+          <div class="cover-wrap">
+            <div class="tcover" style="height:168px;background:#EAF1F6">
+              <span class="deco" style="width:130px;height:130px;background:rgba(195,216,232,.55);left:-40px;bottom:-46px"></span>
+              <view class="icu-5"/>
+            </div>
+          </div>
+          <div class="body"><div class="f-title">图书馆三楼自习位实测：几点去还有座？附时刻表</div>
+          <div class="f-meta"><span class="f-count">94 赞 · 18 评论</span></div></div>
+        </div>
+        <div class="fcard qa wide" onclick="openQa('zhuan')">
+          <div class="qmark">？</div>
+          <div class="w-main">
+            <span class="qtag">求助</span>
+            <div class="f-title">大一转专业到会计，现在准备来得及吗？</div>
+            <div class="f-meta"><span class="f-count">12 人已答 · 等你来</span></div>
+          </div>
+          <div class="w-side"><span class="w-pill ans">去回答</span></div>
+        </div>
+        <div class="fcard photo" onclick="openDetail()">
+          <div class="cover-wrap">
+            <div class="tcover" style="height:142px;background:#FBF6E8">
+              <span class="deco" style="width:110px;height:110px;background:rgba(233,212,138,.5);right:-26px;top:-34px"></span>
+              <span class="deco" style="width:56px;height:56px;background:#E9D48A;left:24px;bottom:20px"></span>
+              <view class="icu-6"/>
+            </div>
+            <span class="badge hot">精华</span>
+          </div>
+          <div class="body"><div class="f-title">秋日校园拍照机位地图：银杏大道已黄透</div>
+          <div class="f-meta"><span class="f-count">402 赞</span></div></div>
+        </div>
+        <div class="fcard photo" onclick="openDetail()">
+          <div class="cover-wrap">
+            <div class="tcover" style="height:158px;background:#EDF2EE">
+              <span class="deco" style="width:100px;height:100px;background:rgba(197,220,205,.55);left:-30px;top:-36px"></span>
+              <view class="icu-7"/>
+            </div>
+          </div>
+          <div class="body"><div class="f-title">单调栈三连的通用套路：哨兵与边界一次讲透</div>
+          <div class="f-meta"><span class="f-count">61 赞 · 9 评论</span></div></div>
+        </div>
+        <div class="fcard doc wide" onclick="toast('资料卡：预览并下载思维导图')">
+          <div class="file-chip">PDF</div>
+          <div class="w-main">
+            <div class="f-title">数据结构期末复习思维导图（含近三年真题标注）</div>
+            <div class="f-meta"><span class="f-count">328 次下载 · v2 · 林青云</span></div>
+          </div>
+          <div class="w-side"><span class="w-pill dl">
+            <view class="icu-8"/>下载</span></div>
+        </div>
+        <div class="fcard chk wide" onclick="toast('打卡卡：进入「每日算法 30 天」挑战')">
+          <div class="chk-ring">
+            <view class="icu-9"/>
+          </div>
+          <div class="w-main">
+            <div class="chk-info"><b>每日算法打卡</b><span>128 人 · 已坚持 9 天</span></div>
+            <div class="chk-note">第 9 天：并查集路径压缩终于理顺了…</div>
+          </div>
+          <div class="w-side"><span class="w-pill go">打卡</span></div>
+        </div>
+        <div class="fcard qa wide" onclick="openQa('xiandian')">
+          <div class="qmark">？</div>
+          <div class="w-main">
+            <span class="qtag">经验</span>
+            <div class="f-title">宿舍限电 800W，台式机到底能不能带？</div>
+            <div class="f-meta"><span class="f-count">38 人已答 · 有可靠回答</span></div>
+          </div>
+          <div class="w-side"><span class="w-pill ans">去回答</span></div>
+        </div>
+        <div class="fcard doc wide" onclick="toast('资料卡：预览真题分类表')">
+          <div class="file-chip" style="background:#FFF3DC;color:#B26A00">XLS</div>
+          <div class="w-main">
+            <div class="f-title">考研数学一近十年真题按知识点分类（含错题统计列）</div>
+            <div class="f-meta"><span class="f-count">512 次下载 · v3 · 郑雨桐</span></div>
+          </div>
+          <div class="w-side"><span class="w-pill dl">
+            <view class="icu-8"/>下载</span></div>
+        </div>
+        <div class="fcard chk wide" onclick="toast('打卡卡：进入「晚跑 5 公里」挑战')">
+          <div class="chk-ring">
+            <view class="icu-10"/>
+          </div>
+          <div class="w-main">
+            <div class="chk-info"><b>晚跑 5 公里 · 第 4 期</b><span>64 人 · 陈思远刚打卡</span></div>
+            <div class="chk-note">5.2 公里，配速 5'48''，晚风很给力</div>
+          </div>
+          <div class="w-side"><span class="w-pill go">打卡</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 屏幕 2：圈子 ============ -->
+    <section class="screen" id="screen-circles">
+      <header class="page-head">
+        <div class="head-row">
+          <div><p class="greet-sub">已加入 3 个圈子</p><h1 class="greet-title">我的圈子</h1></div>
+          <!-- 右上角预留给微信原生胶囊按钮 -->
+        </div>
+        <div class="head-tools">
+          <div class="search-pill" onclick="toast('搜索圈子')">
+            <view class="icu-1"/>
+            搜圈子 · 找组织
+          </div>
+        </div>
+      </header>
+      <div class="my-circles">
+        <div class="mc" onclick="openCircle('algo')"><div class="cc" style="background:#10A56A;color:#fff">算</div><p>算法自习室</p><i class="dot" style="display:block"></i></div>
+        <div class="mc" onclick="openCircle('kaoyan')"><div class="cc" style="background:#DFF6EC;color:#0B7E52">考</div><p>考研自习联盟</p></div>
+        <div class="mc" onclick="openCircle('lunwen')"><div class="cc" style="background:#FFF3DC;color:#B26A00">论</div><p>论文互助圈</p></div>
+        <div class="mc" onclick="toast('原型：创建圈子（名称 / 简介 / 封面 / 标签）')"><div class="cc" style="background:#fff;border:1.5px dashed #10A56A;color:#0B7E52">＋</div><p>建圈子</p></div>
+        <div class="mc" onclick="openAllCircles()"><div class="cc" style="background:#fff;border:1.5px dashed #B9C4BD;color:#93A29A">＋</div><p>发现更多</p></div>
+      </div>
+
+      <div class="sec-title"><b>本周热门圈子</b><span>换一批</span></div>
+      <div class="hot-circles">
+        <div class="hcard" onclick="openCircle('algo')"><div class="hc-cover" style="background:#10A56A">算法与数据结构自习室</div>
+          <div class="hc-body"><p>刷题、讲题、复盘，每周五晚线上题解分享会。</p>
+          <div class="hc-meta"><span>186 人 · 142 帖</span><div class="join-pill joined" onclick="event.stopPropagation();switchCircleTab('chk')">已加入</div></div></div></div>
+        <div class="hcard" onclick="openCircle('ml')"><div class="hc-cover" style="background:#0B7E52">机器学习读书会</div>
+          <div class="hc-body"><p>本周读《动手学深度学习》第 6 章，周日晚上讨论。</p>
+          <div class="hc-meta"><span>97 人 · 66 帖</span><div class="join-pill" onclick="event.stopPropagation();toggleJoin('ml')">加入</div></div></div></div>
+        <div class="hcard" onclick="openCircle('market')"><div class="hc-cover" style="background:#E8960C">校园跳蚤市场</div>
+          <div class="hc-body"><p>毕业季闲置转让：教材、小家电、自行车。</p>
+          <div class="hc-meta"><span>412 人 · 356 帖</span><div class="join-pill" onclick="event.stopPropagation();toggleJoin('market')">加入</div></div></div></div>
+      </div>
+
+      <div class="sec-title"><b>圈内动态</b><span>全部</span></div>
+      <div class="feed-row" onclick="openDetail()">
+        <div class="fr-thumb" style="background:#EDF2EE;display:flex;align-items:center;justify-content:center"><view class="icu-11"/></div>
+        <div class="fr-info"><b>单调栈三连的通用套路</b><span>林青云 · 算法自习室 · 2 小时前</span></div>
+        <span class="circle-tag">题解</span>
+      </div>
+      <div class="feed-row" onclick="toast('进入帖子：审计错题清单')">
+        <div class="fr-thumb" style="background:#FFF3DC;color:#B26A00;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:12px">MD</div>
+        <div class="fr-info"><b>审计第三章错题清单（17 题）</b><span>郑雨桐 · CPA 备考小组 · 昨天</span></div>
+        <span class="circle-tag">资料</span>
+      </div>
+      <div class="feed-row" onclick="toast('进入帖子：读书会预告')">
+        <div class="fr-thumb" style="background:#DFF6EC;color:#0B7E52;display:flex;align-items:center;justify-content:center;font-size:15px;border-radius:12px">阅</div>
+        <div class="fr-info"><b>读书会预告：卷积神经网络</b><span>王立 · 机器学习读书会 · 昨天</span></div>
+        <span class="circle-tag">预告</span>
+      </div>
+    </section>
+
+    <!-- ============ 屏幕 3：消息 ============ -->
+    <section class="screen" id="screen-messages">
+      <header class="page-head">
+        <div class="head-row">
+          <div><p class="greet-sub">互动与会话</p><h1 class="greet-title">消息</h1></div>
+          <!-- 右上角预留给微信原生胶囊按钮 -->
+        </div>
+      </header>
+      <div class="interact-row">
+        <div class="icard alert" onclick="openNt('like')">
+          <view class="icu-12"/>
+          <b>12</b><span>新的赞</span></div>
+        <div class="icard" onclick="openNt('comment')">
+          <view class="icu-13"/>
+          <b>5</b><span>新评论</span></div>
+        <div class="icard" onclick="openNt('follow')">
+          <view class="icu-14"/>
+          <b>3</b><span>新关注</span></div>
+      </div>
+      <div class="sec-title"><b>私信</b><span style="color:var(--primary-deep);font-weight:600" onclick="toast('已全部标记为已读')">全部已读</span></div>
+      <div class="convs">
+        <div class="conv" onclick="openDM('chen')">
+          <div class="cv" style="background:#DFF6EC;color:#0B7E52">陈</div>
+          <div class="ci"><b>陈思远 <em>周五</em></b><p>顺便问下，周五的题解分享会你去吗？</p></div>
+          <span class="unread">1</span>
+        </div>
+        <div class="conv" onclick="openDM('zhou')">
+          <div class="cv" style="background:#FFF3DC;color:#B26A00">周</div>
+          <div class="ci"><b>周晓 <em>周五</em></b><p>收到！周末去试试机位</p></div>
+          <span class="unread">2</span>
+        </div>
+        <div class="conv" onclick="openDM('wang')">
+          <div class="cv" style="background:#3D9BFF;color:#fff">王</div>
+          <div class="ci"><b>王立 <em>周五</em></b><p>分享会记得把单调栈的例子带上。</p></div>
+          <span class="unread">1</span>
+        </div>
+        <div class="conv" onclick="openDM('su')">
+          <div class="cv" style="background:#fff;border:1.5px solid #EDF0EC;color:#5B6B63">苏</div>
+          <div class="ci"><b>苏墨 <em>周四</em></b><p>文献综述模板用起来了，请你看奶茶</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 屏幕 4：学伴（统一问答页） ============ -->
+    <section class="screen" id="screen-ai">
+      <div class="ai-head">
+        <button class="mine-back" onclick="switchTab('discover')" aria-label="返回">
+          <view class="icu-15"/>
+        </button>
+        <div class="ai-badge"><view class="icu-16"/></div>
+        <div><h1>青云学伴</h1><p>校园 AI 问答 · 什么都能问</p></div>
+        <!-- 右上角预留给微信原生胶囊按钮 -->
+      </div>
+      <div class="hist-row">
+        <div class="hist" onclick="openChat('plan')">🕘 上次：数据结构复习计划 ›</div>
+        <div class="hist" onclick="openChat('paper')">上次：文献综述降重 ›</div>
+      </div>
+      <div class="chat-msgs ai-msgs" id="aiMsgs"></div>
+    </section>
+
+    <!-- ============ 我的（覆盖层） ============ -->
+    <div class="overlay" id="mineOverlay">
+      <div class="mine-nav">
+        <button class="mine-back" onclick="closeMine()" aria-label="返回">
+          <view class="icu-15"/>
+        </button>
+        <span>个人中心</span>
+      </div>
+      <div class="idcard">
+        <view class="icu-17"/>
+        <div class="row1">
+          <div class="bigava">林</div>
+          <div><h2>林青云</h2><p class="meta">计算机学院 · 软件工程 · 大三</p><span class="sid">学号 20231001</span></div>
+        </div>
+        <div class="stats">
+          <div><b>86</b><span>关注</span></div>
+          <div><b>132</b><span>粉丝</span></div>
+          <div><b>19</b><span>动态</span></div>
+        </div>
+      </div>
+
+      <div class="heat">
+        <h3>坚持的痕迹<span>过去一年 365 天 · 连续 4 天</span></h3>
+        <div class="ht-body">
+          <div class="ht-side"><span>一</span><span></span><span>三</span><span></span><span>五</span><span></span><span>日</span></div>
+          <div class="ht-grid" id="heatGrid"></div>
+        </div>
+        <div class="ht-x"><span>去年 10 月</span><span>1 月</span><span>4 月</span><span>7 月</span><span>本周</span></div>
+      </div>
+
+      <div class="sec-title"><b>成就墙</b><span>4 / 6</span></div>
+      <div class="ach-scroll">
+        <div class="ach"><div class="medal"><view class="icu-18"/></div><b>精华作者</b><span>帖子被加精</span></div>
+        <div class="ach"><div class="medal"><view class="icu-19"/></div><b>七日之约</b><span>连续打卡 7 天</span></div>
+        <div class="ach"><div class="medal"><view class="icu-20"/></div><b>资源共享者</b><span>下载满 100 次</span></div>
+        <div class="ach lock"><div class="medal"><view class="icu-21"/></div><b>三十而立</b><span>累计 30 天</span></div>
+        <div class="ach lock"><div class="medal"><view class="icu-22"/></div><b>校园红人</b><span>100 位关注者</span></div>
+      </div>
+
+      <div class="mlist">
+        <div class="mrow" onclick="toast('我的收藏')"><view class="icu-23"/>我的收藏<span class="arr"><view class="icu-24"/></span></div>
+        <div class="mrow" onclick="toast('我上传的资料')"><view class="icu-25"/>我的资料<span class="arr"><view class="icu-24"/></span></div>
+        <div class="mrow" onclick="toast('草稿箱')"><view class="icu-26"/>草稿箱<span class="arr"><view class="icu-24"/></span></div>
+        <div class="mrow" onclick="toast('设置')"><view class="icu-27"/>设置<span class="arr"><view class="icu-24"/></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 学伴统一问答 dock（仅学伴屏显示：常用问题 + 输入条） -->
+  <div class="ai-dock" id="aiDock" style="display:none">
+    <div class="dock-chips" id="aiChips"></div>
+    <div class="dock-input">
+      <input id="aiInputField" placeholder="问点什么…复习、论文、真题、选课、生活都行" />
+      <div class="send" onclick="aiSend()">
+        <view class="icu-28"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- 底部导航 -->
+  <nav class="tabbar" id="tabbar">
+    <div class="tab on" data-s="discover" onclick="switchTab('discover')">
+      <view class="icu-29"/>
+      发现</div>
+    <div class="tab" data-s="circles" onclick="switchTab('circles')">
+      <view class="icu-30"/>
+      圈子</div>
+    <div class="fab-center" onclick="openSheet()">
+      <div class="fab-btn"><view class="icu-31"/></div>
+    </div>
+    <div class="tab" data-s="messages" onclick="switchTab('messages')">
+      <view class="icu-32"/>
+      消息<i class="tdot"></i></div>
+    <div class="tab" data-s="ai" onclick="switchTab('ai')">
+      <view class="icu-33"/>
+      学伴</div>
+  </nav>
+
+  <!-- 半屏发布 -->
+  <div class="mask" id="mask" onclick="closeSheet()"></div>
+  <div class="sheet" id="sheet">
+    <div class="handle"></div>
+    <h3>发布到青云</h3>
+    <p class="sub">选择内容类型，同步到你加入的圈子</p>
+    <div class="pub-grid">
+      <div class="pub" onclick="toast('原型：进入「发动态」（可配图/带话题/选圈子）')">
+        <div class="pi" style="background:#DFF6EC"><view class="icu-34"/></div>
+        <div><b>发动态</b><span>照片 · 话题 · 选圈子同步</span></div>
+      </div>
+      <div class="pub" onclick="toast('原型：进入「提问题」，可悬赏校园币')">
+        <div class="pi" style="background:#3D9BFF"><span style="color:#fff;font-weight:800;font-size:17px">？</span></div>
+        <div><b>提问题</b><span>求助 · 经验 · 可悬赏校园币</span></div>
+      </div>
+      <div class="pub" onclick="toast('原型：进入「传资料」，自动识别课程')">
+        <div class="pi" style="background:#FFF3DC"><view class="icu-35"/></div>
+        <div><b>传资料</b><span>讲义 · 真题 · 自动归入课程</span></div>
+      </div>
+      <div class="pub" onclick="toast('原型：进入「去打卡」，今日待打卡挑战列表')">
+        <div class="pi" style="background:#DFF6EC"><view class="icu-36"/></div>
+        <div><b>去打卡</b><span>每日算法 · 考研词汇 · 晚跑</span></div>
+      </div>
+    </div>
+    <p class="note">内容同步到对应圈子 · 请遵守校园社区公约</p>
+  </div>
+
+  <!-- 帖子详情 -->
+  <div class="detail" id="detail">
+    <div class="d-close" onclick="closeDetail()"><view class="icu-37"/></div>
+    <div class="tcover d-hero" style="height:232px;background:#FDF3E3">
+      <span class="deco" style="width:170px;height:170px;background:rgba(246,200,127,.4);right:-44px;bottom:-60px"></span>
+      <span class="deco" style="width:96px;height:96px;background:#F6C87F;right:44px;bottom:26px"></span>
+      <view class="icu-38"/>
+    </div>
+    <div class="d-body">
+      <span class="d-tag">精华 · 摄影</span>
+      <h1>周五晚霞收容所｜宿舍楼天台实拍，六点半那一场最好看</h1>
+      <div class="d-author"><div class="av">周</div><div><b>周晓</b><span>艺术学院 · 视觉传达 · 14 小时前</span></div></div>
+      <p>宿舍楼天台拍到的晚霞，六点半那一场最好看，胶片直出无修。蹲了一个星期才等到这卷云。</p>
+      <p style="margin-top:10px">机位在 6 号楼天台西侧，下周一还有一波，想拍的的同学可以约……</p>
+      <div style="margin-top:14px;display:flex;gap:8px">
+        <span class="d-tag">摄影</span><span class="d-tag">晚霞</span><span class="d-tag">机位</span>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--line)">
+        <b style="font-size:14px">评论 42</b>
+        <div style="display:flex;gap:10px;margin-top:12px">
+          <div class="av" style="width:30px;height:30px;font-size:12px">林</div>
+          <div><b style="font-size:12.5px">林青云</b><p style="font-size:13px;margin-top:2px">第三张的光影绝了，用的什么卷？</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="d-actions">
+      <div class="d-input">说点什么…</div>
+      <div class="d-act" onclick="toast('点赞（原型）')"><view class="icu-39"/>286</div>
+      <div class="d-act" onclick="toast('收藏（原型）')"><view class="icu-40"/>收藏</div>
+      <div class="d-act" onclick="toast('分享（原型）')"><view class="icu-41"/></div>
+    </div>
+  </div>
+
+  <!-- 圈子详情（覆盖层） -->
+  <div class="overlay" id="circleOverlay">
+    <div class="mine-nav">
+      <button class="mine-back" onclick="closeCircle()" aria-label="返回">
+        <view class="icu-15"/>
+      </button>
+      <span id="cdNavTitle">圈子</span>
+    </div>
+    <div class="cd-hero">
+      <div class="cd-cover" id="cdCover">算</div>
+      <div class="cd-main">
+        <b id="cdName">算法自习室</b>
+        <p id="cdDesc"></p>
+        <div class="cd-stats" id="cdStats"></div>
+      </div>
+      <button class="cd-join" id="cdJoinBtn">已加入</button>
+    </div>
+    <div class="seg" id="cdTabs">
+      <div class="seg-t on" data-t="feed" onclick="switchCircleTab('feed')">动态</div>
+      <div class="seg-t" data-t="res" onclick="switchCircleTab('res')">资料</div>
+      <div class="seg-t" data-t="chk" onclick="switchCircleTab('chk')">打卡</div>
+    </div>
+    <div id="cdPane" style="padding:0 20px 30px"></div>
+  </div>
+
+  <!-- 全部圈子（覆盖层） -->
+  <div class="overlay" id="allOverlay">
+    <div class="mine-nav">
+      <button class="mine-back" onclick="closeAllCircles()" aria-label="返回">
+        <view class="icu-15"/>
+      </button>
+      <span>全部圈子</span>
+    </div>
+    <div style="padding:12px 16px 0">
+      <div class="search-pill" onclick="toast('搜索圈子 · 课程 · 兴趣')">
+        <view class="icu-1"/>
+        搜圈子 · 课程 · 兴趣
+      </div>
+    </div>
+    <div class="all-chips" id="allChips">
+      <div class="chip on" data-c="全部">全部</div>
+      <div class="chip" data-c="学习">学习</div>
+      <div class="chip" data-c="考研">考研</div>
+      <div class="chip" data-c="生活">生活</div>
+      <div class="chip" data-c="兴趣">兴趣</div>
+    </div>
+    <div class="cd-empty" style="margin:0 20px 12px" onclick="toast('原型：创建圈子（名称 / 简介 / 封面 / 标签）')">＋ 创建圈子</div>
+    <div class="all-list" id="allList"></div>
+  </div>
+
+  <!-- 私信（iMessage 风） -->
+  <div class="overlay" id="dmOverlay">
+    <div class="dm-head">
+      <button class="dm-back" onclick="closeDM()" aria-label="返回">
+        <view class="icu-42"/>
+      </button>
+      <div class="dm-mid">
+        <div class="av" id="dmAv">陈</div>
+        <b id="dmName">陈思远</b>
+        <i class="on" id="dmOn"></i>
+      </div>
+      <div class="dm-right"></div>
+      <!-- 右上角预留给微信原生胶囊按钮 -->
+    </div>
+    <div class="dm-body" id="dmBody"></div>
+    <div class="dm-bar">
+      <div class="dm-plus" onclick="toast('原型：发送图片 / 文件')">
+        <view class="icu-43"/>
+      </div>
+      <div class="dm-field" id="dmField">iMessage</div>
+      <div class="dm-send" onclick="toast('原型：发送消息')">发送</div>
+    </div>
+  </div>
+
+  <!-- 问答详情 -->
+  <div class="overlay" id="qaOverlay">
+    <div class="mine-nav">
+      <button class="mine-back" onclick="closeQa()" aria-label="返回">
+        <view class="icu-15"/>
+      </button>
+      <span>问答</span>
+    </div>
+    <div id="qaContent"></div>
+    <div class="qa-bar">
+      <div class="qa-input">写下你的回答…</div>
+      <div class="qa-pub" onclick="toast('原型：发布回答（可插图、支持 Markdown）')">发布</div>
+    </div>
+  </div>
+
+  <!-- 互动消息（赞/评论/关注） -->
+  <div class="overlay" id="ntOverlay">
+    <div class="mine-nav">
+      <button class="mine-back" onclick="closeNt()" aria-label="返回">
+        <view class="icu-15"/>
+      </button>
+      <span>互动消息</span>
+    </div>
+    <div class="seg" id="ntTabs" style="margin-top:12px">
+      <div class="seg-t" data-t="like" onclick="switchNtTab('like')">赞</div>
+      <div class="seg-t" data-t="comment" onclick="switchNtTab('comment')">评论</div>
+      <div class="seg-t" data-t="follow" onclick="switchNtTab('follow')">关注</div>
+    </div>
+    <div class="nt-list" id="ntPane"></div>
+  </div>
+
+  <!-- AI 对话（极简聊天，内容由 CONVOS 数据渲染） -->
+  <div class="chat" id="chat">
+    <div class="chat-head">
+      <button class="chat-back" onclick="closeChat()" aria-label="返回">
+        <view class="icu-44"/>
+      </button>
+      <div><b>青云学伴</b><span id="chatSub">对话 · 可引用站内资料作答</span></div>
+      <!-- 右上角预留给微信原生胶囊按钮 -->
+    </div>
+    <div class="chat-msgs" id="chatMsgs"></div>
+    <div class="sugs" id="chatSugs"></div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="追问，或换个问题…" />
+      <div class="send" onclick="sendChat()">
+        <view class="icu-28"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+// Tab 切换
+function switchTab(key){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-'+key).classList.add('active');
+  document.querySelectorAll('.tab[data-s]').forEach(t=>t.classList.toggle('on',t.dataset.s===key));
+  document.getElementById('aiDock').style.display = key==='ai' ? 'flex' : 'none';
+  document.getElementById('aiDock').classList.toggle('to-bottom', key==='ai');
+  document.getElementById('tabbar').classList.toggle('hide', key==='ai');
+  if(key==='ai'){initAi();scrollEnd('aiMsgs');}
+  else{document.getElementById('stage').scrollTop = 0;}
+}
+// 频道筛选
+const FALLS_FILTER={qa:'qa',doc:'doc',chk:'chk',photo:'photo'};
+document.getElementById('channels').addEventListener('click',e=>{
+  const chip=e.target.closest('.chip'); if(!chip)return;
+  document.querySelectorAll('#channels .chip').forEach(c=>c.classList.remove('on'));
+  chip.classList.add('on');
+  const f=chip.dataset.f;
+  document.querySelectorAll('#falls .fcard').forEach(card=>{
+    card.style.display=(f==='all'||card.classList.contains(f))?'':'none';
+  });
+});
+// 半屏发布
+function openSheet(){document.getElementById('mask').classList.add('show');document.getElementById('sheet').classList.add('show');}
+function closeSheet(){document.getElementById('mask').classList.remove('show');document.getElementById('sheet').classList.remove('show');}
+// 详情
+function openDetail(){document.getElementById('detail').classList.add('show');}
+function closeDetail(){document.getElementById('detail').classList.remove('show');}
+// AI 对话（场景化数据驱动：每个入口打开属于自己的对话）
+const CITE=(t,f)=>'<div class="cite"><span class="fi">'+f+'</span>'+t+'</div>';
+const CONVOS={
+ plan:{sub:'期末复习计划',ph:'例如：高数下周五考，帮我排 3 天计划',
+  msgs:[['ai','报上课程和考试时间，我帮你排复习计划、查真题、理概念。'],
+        ['user','数据结构下周三考，帮我排一个 3 天复习计划，每天大概 2 小时'],
+        ['ai','排好了～结合你圈子里共享的资料，这样安排最稳：<div class="plan"><div><b>Day 1</b><span>线性表 + 栈队列：先过一遍思维导图，再刷 10 道基础题巩固手感</span></div><div><b>Day 2</b><span>树与图：重点二叉树遍历、图的 BFS/DFS，做完近三年对应真题</span></div><div><b>Day 3</b><span>排序 + 查找 + 大题模板：一套真题限时模考，错题当天清零</span></div></div><div class="cites">'+CITE('数据结构期末复习思维导图.pdf','PDF')+CITE('近十年真题按知识点分类.xlsx','XLS')+'</div>']],
+  sugs:['生成 7 天打卡计划','压缩成 1 天速成版','只要大题套路']},
+ paper:{sub:'论文陪跑',ph:'例如：帮我润色这段摘要…',
+  msgs:[['ai','把开题方向、综述题目或要润色的段落发我，我陪你一步步改到过。'],
+        ['user','文献综述查重率 28%，怎么快速降下来？'],
+        ['ai','别慌，三招最见效：<div class="plan"><div><b>改写</b><span>长句拆短、主动被动互换，保持原意换句式</span></div><div><b>替换</b><span>高频术语换同义表述，数据改成表格呈现</span></div><div><b>引用</b><span>观点都标注来源，直接引用转间接转述</span></div></div><div class="cites">'+CITE('文献综述模板（学长共享）.docx','DOC')+'</div>']],
+  sugs:['帮我改写一段','列个开题提纲','检查参考文献格式']},
+ quiz:{sub:'真题速查',ph:'例如：近三年图论大题都考了什么？',
+  msgs:[['ai','报上课程和知识点，我直接从真题库里帮你捞题。'],
+        ['user','近三年图论大题都考了什么？'],
+        ['ai','整理好了：<div class="plan"><div><b>2023</b><span>最短路（Dijkstra）+ 拓扑排序，各一道大题</span></div><div><b>2024</b><span>二分图匹配 + 关键路径，手算推演型</span></div><div><b>2025</b><span>并查集应用 + BFS 网格最短路</span></div></div><div class="cites">'+CITE('近十年真题按知识点分类.xlsx','XLS')+CITE('图论大题笔记（圈子精华）.pdf','PDF')+'</div>']],
+  sugs:['生成对应练习','只看 2025 年的','手算步骤讲一遍']},
+ digest:{sub:'帖子速览',ph:'例如：总结一下今天广场的热帖',
+  msgs:[['ai','把感兴趣的帖子或话题发我，我压缩成三句话帮你省时间。'],
+        ['user','总结一下今天广场的热帖'],
+        ['ai','今天三件大事：<div class="plan"><div><b>晚霞</b><span>周晓的天台晚霞图火了，402 赞，机位在 6 号楼西侧</span></div><div><b>资料</b><span>数据结构思维导图更新 v2，已 328 次下载</span></div><div><b>问答</b><span>转专业到会计的提问已有 12 条高质量回答</span></div></div>']],
+  sugs:['晚霞那帖细说','思维导图去哪下','转专业回答摘要']},
+ checkin:{sub:'打卡计划',ph:'例如：想 21 天背完考研词汇',
+  msgs:[['ai','想坚持什么？我来生成挑战，还能拉同学一起打卡。'],
+        ['user','每天背 50 个考研词汇，坚持 21 天'],
+        ['ai','挑战建好了：<div class="plan"><div><b>节奏</b><span>每天 50 词，早 20 复习 + 晚 30 新词</span></div><div><b>兜底</b><span>漏卡当天 22:00 提醒，最多补卡 1 次</span></div><div><b>搭子</b><span>已邀请考研自习联盟的同学围观加油</span></div></div>']],
+  sugs:['立即发起打卡','改成 30 天','拉同学进挑战']},
+ course:{sub:'选课参谋',ph:'例如：AI 导论和编译原理选哪个？',
+  msgs:[['ai','把备选课程发我，我综合学长学姐的真实评价给你参谋。'],
+        ['user','下学期选 AI 导论还是编译原理？'],
+        ['ai','结合 37 条圈内评价：<div class="plan"><div><b>AI 导论</b><span>给分好、项目有趣，但人多要抢，适合快速上手</span></div><div><b>编译原理</b><span>硬核吃时间、收获深，走系统方向或考研建议选</span></div><div><b>建议</b><span>冲保研选编译，求绩点选 AI 导论</span></div></div><div class="cites">'+CITE('选课评价汇总（2025 春）.xlsx','XLS')+'</div>']],
+  sugs:['编译作业量大吗','AI 导论考勤严吗','两个都抢得到吗']}
+};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function aiRow(inner){return '<div class="row ai"><div class="bubble">'+inner+'</div></div>'}
+function userRow(t){return '<div class="row user"><div class="bubble">'+esc(t)+'</div></div>'}
+function scrollEnd(id){
+  const el=document.getElementById(id);
+  if(id==='aiMsgs'){const st=document.getElementById('stage');st.scrollTop=st.scrollHeight;}
+  else{el.scrollTop=el.scrollHeight;}
+}
+function appendUserTo(id,t){document.getElementById(id).insertAdjacentHTML('beforeend',userRow(t));scrollEnd(id)}
+function appendUser(t){appendUserTo('chatMsgs',t)}
+// 自由提问的话题路由：识别问题类型给对应风格的回答（原型演示；正式版由后端大模型实时作答）
+const CITES2='<div class="cites">'+CITE('数据结构期末复习思维导图.pdf','PDF')+CITE('近十年真题按知识点分类.xlsx','XLS')+'</div>';
+const TOPICS=[
+ {k:['复习','考试','冲刺','速成','几天','排计划','计划','高数','线代','概率','四六级','期末','划重点'],t:'复习规划',
+  r:()=>'这类复习问题我最拿手，通用骨架是：<div class="plan"><div><b>圈考点</b><span>对照考纲和历年真题，先标出高频章节</span></div><div><b>分轮次</b><span>第一轮过概念 → 第二轮刷题 → 第三轮限时模考</span></div><div><b>留缓冲</b><span>考前一天只看错题，不碰新内容</span></div></div>把课程名和考试时间发我，我按这个骨架排每天的任务清单。'+CITES2},
+ {k:['论文','降重','开题','综述','摘要','润色','查重','参考文献'],t:'论文写作',
+  r:()=>'论文的事分三段走：<div class="plan"><div><b>搭骨架</b><span>先定研究问题和提纲，我帮你逐节展开</span></div><div><b>填内容</b><span>每写完一段发我，我帮你顺逻辑、改表达</span></div><div><b>过检查</b><span>查重、格式、参考文献一条条过</span></div></div>现在到哪一步了？把开题方向或段落发我。'+CITE('文献综述模板（学长共享）.docx','DOC')},
+ {k:['真题','考点','考了什么','题型','出题','大纲'],t:'真题题库',
+  r:()=>'真题我来捞：报上课程，我按知识点分类整理近十年题目，并标出高频考点。'+CITES2},
+ {k:['选课','老师','给分','考勤','哪个好','选哪个','抢课'],t:'选课参考',
+  r:()=>'选课看三件事：给分、收获、时间成本。把备选课程发我，我综合圈内学长学姐的真实评价给你对比。'+CITE('选课评价汇总（2025 春）.xlsx','XLS')},
+ {k:['打卡','坚持','习惯','背单词','词汇','早起','跑步','挑战'],t:'打卡挑战',
+  r:()=>'想坚持的事告诉我，我帮你定节奏：目标拆小、固定时间、漏卡兜底提醒，还能拉同学围观监督。说吧，你想坚持什么？'},
+ {k:['总结','速览','热帖','广场','今天','新鲜事'],t:'内容速览',
+  r:()=>'好，把今天广场的热帖压成三句话：① 天台晚霞图 402 赞最火；② 数据结构思维导图 v2 更新；③ 转专业提问已有 12 条高质量回答。想深入哪条说一声。'},
+ {k:['焦虑','压力','睡不着','失眠','迷茫','烦','emo','孤独','累'],t:'树洞倾听',
+  r:()=>'先抱一下，期末周大家都紧，你不是一个人。要倾诉我听着；要方法我也有：睡前十分钟呼吸放松、把待办写下来清空大脑、每天留半小时纯休息。想聊聊具体是哪件事吗？'},
+ {k:['食堂','宿舍','二手','闲置','外卖','快递','校园卡','生活'],t:'校园生活',
+  r:()=>'生活问题也可以问我～食堂窗口、二手闲置、宿舍用电这些，我会去圈子里的真实帖子里帮你找答案，并附上原帖链接。'}
+];
+function topicOf(q){return TOPICS.find(tp=>tp.k.some(w=>q.includes(w)))}
+function botReplyTo(id,q){
+  document.getElementById(id).insertAdjacentHTML('beforeend','<div class="row ai typing-row"><div class="bubble"><span class="typing"><i></i><i></i><i></i></span></div></div>');
+  scrollEnd(id);
+  setTimeout(()=>{
+    const box=document.getElementById(id);const t=box.querySelector('.typing-row');
+    if(!t)return;
+    const tp=topicOf(q||'');
+    const html=tp?tp.r():('好问题，分两步来：① 先在站内资料库搜一圈，看同学有没有整理过相关内容；② 没有现成的，我直接给答案并标注引用来源。'+CITES2);
+    if(id==='chatMsgs'){const sub=document.getElementById('chatSub');if(sub&&sub.dataset.ask==='1')sub.textContent='自由提问 · '+(tp?tp.t:'通用')}
+    t.outerHTML=aiRow(html);
+    scrollEnd(id);
+  },1100);
+}
+function botReply(q){botReplyTo('chatMsgs',q)}
+function sendChat(){
+  const inp=document.getElementById('chatInput');const v=inp.value.trim();
+  if(!v){toast('先输入你的问题吧');return}
+  inp.value='';appendUserTo('chatMsgs',v);botReplyTo('chatMsgs',v);
+}
+function quickAsk(t){appendUserTo('chatMsgs',t);botReplyTo('chatMsgs',t)}
+function renderSugs(c){document.getElementById('chatSugs').innerHTML=c.sugs.map(s=>'<div class="sug" onclick="quickAsk(this.textContent)">'+s+'</div>').join('')}
+function openChat(key,q){
+  const c=CONVOS[key]||CONVOS.plan;
+  const sub=document.getElementById('chatSub');
+  sub.textContent=c.sub;sub.dataset.ask='0';
+  document.getElementById('chatInput').placeholder=c.ph;
+  document.getElementById('chatMsgs').innerHTML=c.msgs.map(m=>m[0]==='user'?userRow(m[1]):aiRow(m[1])).join('');
+  renderSugs(c);
+  document.getElementById('chat').classList.add('show');
+  if(q){
+    document.getElementById('chatMsgs').innerHTML='';
+    sub.dataset.ask='1';sub.textContent='自由提问';
+    appendUserTo('chatMsgs',q);botReplyTo('chatMsgs',q);
+  }
+  scrollEnd('chatMsgs');
+}
+function closeChat(){document.getElementById('chat').classList.remove('show')}
+// ===== 学伴 Tab：统一问答页 =====
+const AI_CHIPS=[['排复习计划','帮我排期末复习计划'],['论文降重','论文查重怎么降重'],['查真题','历年真题都考了什么'],['选课参谋','两门课选哪个好'],['打卡计划','生成 21 天打卡计划'],['总结热帖','总结今天广场的热帖']];
+let aiInited=false;
+function initAi(){
+  if(aiInited)return;aiInited=true;
+  const asks=[
+    '数据结构下周三考试，怎么抢救？',
+    '文献综述查重 28%，还有救吗？',
+    'AI 导论还是编译原理，选哪个好？'
+  ];
+  document.getElementById('aiMsgs').innerHTML=
+    aiRow('你好，我是青云学伴。复习计划、论文降重、真题速查、选课、打卡、生活琐事……什么都能问，直接打字，或从今天大家都在问的问题开始：')+
+    '<div class="ask-list"><h4>今天大家都在问</h4>'+
+    asks.map(a=>'<div class="ask-item" onclick="aiSendChip(this.dataset.q)" data-q="'+a+'"><span style="flex:1;min-width:0">'+a+'</span><view class="icu-45"/></div>').join('')+
+    '</div>';
+  document.getElementById('aiChips').innerHTML=AI_CHIPS.map(c=>'<div class="sug" data-q="'+c[1]+'" onclick="aiSendChip(this.dataset.q)">'+c[0]+'</div>').join('');
+}
+// 用户开口后撤掉冷启动提示（问候 + 常问列表），界面只留真实对话
+function clearAiHints(){
+  const box=document.getElementById('aiMsgs');
+  const al=box.querySelector('.ask-list');if(al)al.remove();
+  const rows=box.querySelectorAll('.row');
+  if(rows.length===1&&rows[0].classList.contains('ai'))rows[0].remove();
+}
+function aiSendChip(q){clearAiHints();appendUserTo('aiMsgs',q);botReplyTo('aiMsgs',q)}
+function aiSend(){
+  const inp=document.getElementById('aiInputField');const v=inp.value.trim();
+  if(!v){toast('先输入你的问题吧');return}
+  inp.value='';clearAiHints();appendUserTo('aiMsgs',v);botReplyTo('aiMsgs',v);
+}
+// 我的覆盖层
+function openMine(){const o=document.getElementById('mineOverlay');o.classList.add('show');requestAnimationFrame(()=>requestAnimationFrame(()=>o.classList.add('in')));}
+function closeMine(){const o=document.getElementById('mineOverlay');o.classList.remove('in');setTimeout(()=>o.classList.remove('show'),300);}
+// 打卡热力图（列 = 一年中的第几周 53 列，行 = 周一~周日；真实日期定位，今天呼吸闪烁）
+(function(){
+  const lv=[0,0,0,0,1,1,1,2,2,3,4];
+  let seed=7;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+  const grid=Array.from({length:7},()=>Array(53).fill('off'));   // 默认占位透明
+  const today=new Date();
+  const dow=(today.getDay()+6)%7;                                // 周一=0
+  for(let i=0;i<365;i++){                                        // i=0 → 今天
+    const d=new Date(today); d.setDate(d.getDate()-i);
+    const col=52-Math.floor(i/7);
+    const row=(d.getDay()+6)%7;
+    let cls='off';
+    if(i===0)cls='today';
+    else{const l=lv[Math.floor(rnd()*lv.length)];cls=l?'l'+l:'';}
+    grid[row][col]=cls;
+  }
+  let html='';
+  for(let c=0;c<53;c++){                    // 列 = 第几周（列优先渲染）
+    html+='<div class="ht-col">';
+    for(let r=0;r<7;r++)html+='<i class="'+grid[r][c]+'"></i>';
+    html+='</div>';
+  }
+  document.getElementById('heatGrid').innerHTML=html;
+})();
+// ===== 圈子数据与详情页（原型） =====
+const CIRCLES={
+ algo:{name:'算法自习室',ch:'算',bg:'#10A56A',joined:true,cat:'学习',
+  desc:'刷题、讲题、复盘，每周五晚线上题解分享会。',
+  stats:['186 人','142 帖','今日 12 打卡'],
+  feed:[['code','单调栈三连的通用套路','林青云 · 2 小时前','题解'],['qa','图论最短路该怎么入门？','苏墨 · 3 小时前','问答'],['doc','AcWing 春季讲义（圈内整理）','陈思远 · 昨天','资料']],
+  res:[['PDF','数据结构期末复习思维导图.pdf','328 次下载 · v2'],['XLS','近十年真题按知识点分类.xlsx','512 次下载 · v3']],
+  chk:[['每日算法打卡',9,30,'128 人'],['图论专项 14 天',5,14,'46 人']]},
+ kaoyan:{name:'考研自习联盟',ch:'考',bg:'#0B7E52',joined:true,cat:'考研',
+  desc:'考研公共课打卡与资料共享，政治英语数学一起冲。',
+  stats:['203 人','96 帖','今日 31 打卡'],
+  feed:[['doc','肖四到货拼团（5 人成团）','郑雨桐 · 1 小时前','拼团'],['doc','英语一阅读精读笔记（2010-2025）','周晓 · 5 小时前','资料'],['qa','数学三和数一怎么选？','王立 · 昨天','问答']],
+  res:[['XLS','考研数学一近十年真题分类.xlsx','512 次下载 · v3'],['DOC','英语一大作文模板（高分版）.docx','203 次下载']],
+  chk:[['考研词汇 50 / 天',12,21,'88 人'],['数学每日一题',18,30,'64 人']]},
+ lunwen:{name:'论文互助圈',ch:'论',bg:'#B26A00',joined:true,cat:'学习',
+  desc:'开题互审、文献共享、降重经验交流。',
+  stats:['97 人','54 帖','今日 6 打卡'],
+  feed:[['doc','文献综述降重心得：三稿实录','林青云 · 昨天','经验'],['doc','开题报告模板（学院官方版）','郑雨桐 · 2 天前','模板'],['qa','问卷数据怎么导出 SPSS？','苏墨 · 3 天前','问答']],
+  res:[['DOC','文献综述模板（学长共享）.docx','154 次下载'],['PDF','答辩问答准备清单.pdf','88 次下载']],
+  chk:[['文献阅读 7 天挑战',2,7,'19 人']]},
+ ml:{name:'机器学习读书会',ch:'读',bg:'#0B7E52',joined:false,cat:'兴趣',
+  desc:'本周读《动手学深度学习》第 6 章，周日晚讨论。',
+  stats:['97 人','66 帖','今日 9 打卡'],
+  feed:[['doc','第 6 章共读笔记（持续更新）','王立 · 4 小时前','笔记'],['qa','卷积可视化有什么工具推荐？','李想 · 昨天','问答'],['chk','周日线上讨论报名接龙','王立 · 昨天','接龙']],
+  res:[['PDF','动手学深度学习·第 6 章批注版.pdf','61 次下载']],
+  chk:[['第 6 章共读打卡',4,7,'41 人']]},
+ market:{name:'校园跳蚤市场',ch:'跳',bg:'#B26A00',joined:false,cat:'生活',
+  desc:'毕业季闲置转让：教材、小家电、自行车。',
+  stats:['412 人','356 帖','今日 88 新帖'],
+  feed:[['tag','出 9 成新山地自行车，可小刀','陈思远 · 30 分钟前','转让'],['tag','收一台 24 寸二手显示器','周晓 · 2 小时前','求购'],['tag','毕业免费送纸箱和参考书','李想 · 5 小时前','免费']],
+  res:[['PDF','跳蚤市场交易安全须知.pdf','96 次下载']],
+  chk:[]},
+ english:{name:'英语角',ch:'英',bg:'#2F7DE0',joined:false,cat:'学习',
+  desc:'每日一句、口语搭子、四六级互助。',
+  stats:['156 人','88 帖','今日 5 打卡'],
+  feed:[['qa','六级听力怎么练最有效？','李想 · 3 小时前','问答'],['doc','每日一句打卡合集（10 月）','苏墨 · 昨天','合集']],
+  res:[['PDF','四六级高频词组手册.pdf','121 次下载']],
+  chk:[['每日一句打卡',15,30,'64 人']]},
+ gwy:{name:'考公互助组',ch:'公',bg:'#0B7E52',joined:false,cat:'考研',
+  desc:'行测刷题搭子、申论互批、岗位信息共享。',
+  stats:['121 人','64 帖','今日 7 打卡'],
+  feed:[['doc','行测资料分析速算技巧汇总','王立 · 昨天','干货'],['qa','应届生身份怎么界定？','周晓 · 2 天前','问答']],
+  res:[['XLS','近三年岗位表汇总.xlsx','77 次下载']],
+  chk:[['行测每日 20 题',6,30,'35 人']]},
+ photo:{name:'摄影小组',ch:'摄',bg:'#B26A00',joined:false,cat:'兴趣',
+  desc:'校园扫街、机位分享、后期交流。',
+  stats:['74 人','132 帖','今日 3 新帖'],
+  feed:[['code','银杏大道机位地图（更新版）','周晓 · 昨天','机位'],['tag','周五晚霞约拍，缺一个模特','陈思远 · 2 小时前','约拍']],
+  res:[['PDF','校园十二时辰拍摄指南.pdf','44 次下载']],
+  chk:[]},
+};
+const cdThumbMap={
+ code:['<view class="icu-46"/>','#EDF2EE'],
+ qa:['？','#E8F3FF','#2F7DE0'],
+ doc:['MD','#FFF3DC','#B26A00'],
+ chk:['✓','#FFEFE8','#F26430'],
+ tag:['跳','#E4F2EA','#0B7E52']
+};
+function cdRow(kind,title,meta,tag){
+ const t=cdThumbMap[kind]||cdThumbMap.doc;
+ const inner=t.length===2?t[0]:'<span style="font-size:11px;font-weight:800">'+t[0]+'</span>';
+ const fg=t[2]||'#4E7A61';
+ return '<div class="feed-row" onclick="toast(\'原型：进入帖子「'+title+'」\')"><div class="fr-thumb" style="background:'+t[1]+';color:'+fg+';display:flex;align-items:center;justify-content:center">'+inner+'</div><div class="fr-info"><b>'+title+'</b><span>'+meta+'</span></div><span class="circle-tag">'+tag+'</span></div>';
+}
+function cdResRow(f,label,size){
+ return '<div class="feed-row" onclick="toast(\'原型：预览并下载\')"><div class="fr-thumb fi-chip" style="background:#FFF3DC;color:#B26A00;display:flex;align-items:center;justify-content:center">'+f+'</div><div class="fr-info"><b>'+label+'</b><span>'+size+'</span></div><span class="w-pill dl"><view class="icu-8"/>下载</span></div>';
+}
+function cdChkRow(name,done,total,meta){
+ const off=Math.round(157*(1-done/total));
+ return '<div class="feed-row" onclick="toast(\'原型：进入打卡挑战「'+name+'」\')"><view class="icu-47"/><div class="fr-info"><b>'+name+'</b><span>'+meta+' · 已坚持 '+done+' 天</span></div><span class="w-pill go">打卡</span></div>';
+}
+function cdEmpty(msg){return '<div class="cd-empty">'+msg+'</div>'}
+let curCircle=null;
+function openCircle(k){
+ const c=CIRCLES[k];if(!c)return;curCircle=k;
+ document.getElementById('cdNavTitle').textContent=c.name;
+ document.getElementById('cdName').textContent=c.name;
+ document.getElementById('cdDesc').textContent=c.desc;
+ const cov=document.getElementById('cdCover');cov.textContent=c.ch;cov.style.background=c.bg;
+ document.getElementById('cdStats').innerHTML=c.stats.map(s=>'<span>'+s+'</span>').join('');
+ const btn=document.getElementById('cdJoinBtn');
+ btn.textContent=c.joined?'去打卡':'加入圈子';
+ btn.classList.toggle('joined',c.joined);
+ btn.onclick=()=>{if(!c.joined){c.joined=true;toast('已加入「'+c.name+'」');openCircle(k);}else{switchCircleTab('chk');}};
+ document.querySelectorAll('#cdTabs .seg-t').forEach(t=>t.classList.toggle('on',t.dataset.t==='feed'));
+ renderCirclePane('feed');
+ const o=document.getElementById('circleOverlay');
+ o.classList.add('show');requestAnimationFrame(()=>requestAnimationFrame(()=>o.classList.add('in')));
+}
+function closeCircle(){const o=document.getElementById('circleOverlay');o.classList.remove('in');setTimeout(()=>o.classList.remove('show'),300);}
+function switchCircleTab(t){
+ document.querySelectorAll('#cdTabs .seg-t').forEach(x=>x.classList.toggle('on',x.dataset.t===t));
+ renderCirclePane(t);
+}
+function renderCirclePane(t){
+ const c=CIRCLES[curCircle];let h='';
+ if(t==='feed'){h=c.feed.map(f=>cdRow(f[0],f[1],f[2],f[3])).join('')||cdEmpty('还没有动态');}
+ else if(t==='res'){h=c.res.map(r=>cdResRow(r[0],r[1],r[2])).join('')||cdEmpty('还没有资料');}
+ else{h=c.chk.length?c.chk.map(k=>cdChkRow(k[0],k[1],k[2],k[3])).join(''):cdEmpty('这个圈子还没有发起打卡，你来发起第一个吧');}
+ document.getElementById('cdPane').innerHTML=h;
+}
+// 全部圈子
+let allCat='全部';
+function openAllCircles(){
+ const o=document.getElementById('allOverlay');
+ o.classList.add('show');requestAnimationFrame(()=>requestAnimationFrame(()=>o.classList.add('in')));
+ renderAllList();
+}
+function closeAllCircles(){const o=document.getElementById('allOverlay');o.classList.remove('in');setTimeout(()=>o.classList.remove('show'),300);}
+function renderAllList(){
+ const keys=Object.keys(CIRCLES).filter(k=>allCat==='全部'||CIRCLES[k].cat===allCat);
+ document.getElementById('allList').innerHTML=keys.map(k=>{
+  const c=CIRCLES[k];
+  return '<div class="ac-row" onclick="closeAllCircles();openCircle(\''+k+'\')"><div class="ac-ava" style="background:'+c.bg+'">'+c.ch+'</div><div class="ac-main"><b>'+c.name+'</b><p>'+c.desc+'</p><span style="font-size:11px;color:var(--text3)">'+c.stats[0]+' · '+c.stats[1]+'</span></div><div class="ac-join'+(c.joined?' joined':'')+'" onclick="event.stopPropagation();toggleJoin(\''+k+'\')">'+(c.joined?'已加入':'加入')+'</div></div>';
+ }).join('');
+}
+function toggleJoin(k){
+ const c=CIRCLES[k];c.joined=!c.joined;
+ toast(c.joined?'已加入「'+c.name+'」':'已退出「'+c.name+'」');
+ renderAllList();
+}
+document.getElementById('allChips').addEventListener('click',e=>{
+ const chip=e.target.closest('.chip');if(!chip)return;
+ document.querySelectorAll('#allChips .chip').forEach(c=>c.classList.remove('on'));
+ chip.classList.add('on');allCat=chip.dataset.c;renderAllList();
+});
+
+// ===== 私信（iMessage 风） =====
+// 自己的头像接口：AVATAR_URL 填网络图片地址即全站生效，空则显示字母占位
+const AVATAR_URL="";
+const ME={name:'林青云',ch:'林',bg:'#10A56A',fg:'#FFFFFF'};
+const DMS={
+ chen:{name:'陈思远',ch:'陈',av:'background:#DFF6EC;color:#0B7E52',date:'周五 20:32',read:false,msgs:[
+  ['in','单调栈的笔记发我一份呗，明天想复盘'],
+  ['out','已发你圈子资料那份 v2，带真题标注'],
+  ['in','完美！顺便问下，周五的题解分享会你去吗？']]},
+ zhou:{name:'周晓',ch:'周',av:'background:#FFF3DC;color:#B26A00',date:'周五 18:05',read:true,msgs:[
+  ['in','收到！周末去试试机位'],
+  ['out','记得带长焦，六点半那场最好看']]},
+ wang:{name:'王立',ch:'王',av:'background:#E8F3FF;color:#2F7DE0',date:'周五 16:40',read:true,msgs:[
+  ['in','分享会记得把单调栈的例子带上。'],
+  ['out','好嘞，PPT 已经放进圈子资料了']]},
+ su:{name:'苏墨',ch:'苏',av:'background:#FFFFFF;color:#5C6B64;border:1.5px solid var(--line)',date:'周四 21:12',read:true,msgs:[
+  ['in','文献综述模板用起来了，请你看奶茶'],
+  ['out','哈哈成交，三分糖']]}
+};
+function openDM(k){
+ const d=DMS[k];if(!d)return;
+ const av=document.getElementById('dmAv');
+ av.textContent=d.ch;av.style.cssText=d.av;
+ document.getElementById('dmName').textContent=d.name;
+ document.getElementById('dmBody').innerHTML=
+  '<div class="dm-date"><span>'+d.date+'</span></div>'+
+  d.msgs.map(m=>m[0]==='in'
+   ?'<div class="dm-mrow dm-in"><div class="dm-ava" style="'+d.av+'">'+d.ch+'</div><div class="dm-bub">'+m[1]+'</div></div>'
+   :'<div class="dm-mrow dm-out"><div class="dm-bub">'+m[1]+'</div><div class="dm-ava" style="background:'+ME.bg+'">'+(AVATAR_URL?'<img class="dm-ava-img" src="'+AVATAR_URL+'" onerror="this.style.display=\'none\'">':'<span>'+ME.ch+'</span>')+'</div></div>').join('')+
+  (d.read?'<div class="dm-read">已读</div>':'');
+ const o=document.getElementById('dmOverlay');
+ o.classList.add('show');requestAnimationFrame(()=>requestAnimationFrame(()=>o.classList.add('in')));
+ document.getElementById('dmBody').scrollTop=1e9;
+}
+function closeDM(){const o=document.getElementById('dmOverlay');o.classList.remove('in');setTimeout(()=>o.classList.remove('show'),300);}
+// ===== 问答详情 =====
+const QAS={
+ zhuan:{tag:'求助',title:'大一转专业到会计，现在准备来得及吗？',
+  asker:['苏','background:#EDEFF2;color:#5C6B64','苏墨 · 经济学院 · 3 小时前'],
+  body:'计算机大类大一，对写代码实在提不起兴趣，反倒是对财务报表挺着迷。转专业窗口还开着，现在补先修课来得及吗？会不会跟不上？',
+  stats:['12 个回答','1.2k 浏览'],
+  answers:[
+   {av:['李','background:#DFF6EC;color:#0B7E52','李想 · 会计学院 · 大三'],pick:'采纳',text:'来得及，我就是大二转过来的。补两门先修课（基础会计 + 微观经济学），暑假看了网课，开学完全跟得上。关键是这学期绩点别掉——转专业主要看大一成绩。',acts:['486 赞','36 评论','收藏']},
+   {av:['郑','background:#FFF3DC;color:#B26A00','郑雨桐 · 会计学院 · 大二'],text:'建议先去旁听一节中级会计再决定，确认是真的感兴趣而不是想象中喜欢。',acts:['92 赞','8 评论']}]},
+ xiandian:{tag:'经验',title:'宿舍限电 800W，台式机到底能不能带？',
+  asker:['李','background:#DFF6EC;color:#0B7E52','李想 · 计算机学院 · 昨天'],
+  body:'配了台 600W 电源的主机，实际游戏功耗大概 300W，会不会跳闸？有经验的学长学姐说说。',
+  stats:['38 个回答','2.6k 浏览'],
+  answers:[
+   {av:['王','background:#E8F3FF;color:#2F7DE0','王立 · 电气学院 · 研二'],pick:'优质',text:'看实际功率不看电源额定。300W 整机 + 显示器 40W 完全没问题，我们宿舍 4 台主机同时开都没跳过。真正的杀手是电吹风（1500W）和热水壶。',acts:['1.2k 赞','104 评论','收藏']},
+   {av:['陈','background:#DFF6EC;color:#0B7E52','陈思远 · 计算机学院 · 大三'],text:'实测半年没跳过闸，冬天同时开暖气煮火锅才会。',acts:['156 赞','12 评论']}]}
+};
+function openQa(k){
+ const q=QAS[k];if(!q)return;
+ document.getElementById('qaContent').innerHTML=
+  '<div class="qa-q"><div class="qq-top"><div class="qmark-s">？</div><span class="qtag">'+q.tag+'</span></div>'+
+  '<h1>'+q.title+'</h1>'+
+  '<div class="qa-asker"><div class="av" style="'+q.asker[1]+'">'+q.asker[0]+'</div><span>'+q.asker[2]+'</span></div>'+
+  '<p class="qbody">'+q.body+'</p>'+
+  '<div class="qa-stats"><span>'+q.stats[0]+'</span><span>'+q.stats[1]+'</span><div class="qa-follow" onclick="toast(\'已关注该问题\')">＋ 关注</div></div></div>'+
+  '<div class="qa-sort"><span class="on">按热度</span><span>按时间</span></div>'+
+  q.answers.map(a=>'<div class="ans"><div class="ans-top"><div class="av" style="'+a.av[1]+'">'+a.av[0]+'</div><div><b>'+a.av[2].split(' · ')[0]+'</b><span>'+a.av[2].split(' · ').slice(1).join(' · ')+'</span></div>'+(a.pick?'<div class="pick"><view class="icu-48"/>'+a.pick+'</div>':'')+'</div>'+
+  '<p>'+a.text+'</p>'+
+  '<div class="ans-acts">'+a.acts.map(x=>'<span>'+x+'</span>').join('')+'</div></div>').join('');
+ const o=document.getElementById('qaOverlay');
+ o.classList.add('show');requestAnimationFrame(()=>requestAnimationFrame(()=>o.classList.add('in')));
+}
+function closeQa(){const o=document.getElementById('qaOverlay');o.classList.remove('in');setTimeout(()=>o.classList.remove('show'),300);}
+
+// ===== 互动消息（赞/评论/关注） =====
+const NT_THUMB={
+ sunset:'<div class="nt-thumb" style="background:#FDF3E3"><view class="icu-49"/></div>',
+ code:'<div class="nt-thumb" style="background:#EDF2EE"><view class="icu-46"/></div>',
+ pdf:'<div class="nt-thumb" style="background:#DFF6EC;color:#0B7E52;font-size:10.5px;font-weight:800">PDF</div>'
+};
+const NTS={
+ like:[
+  {av:['周','#FFF3DC','#B26A00','周晓'],act:'赞了你的动态',what:'周五晚霞收容所｜宿舍楼天台实拍',tm:'12 分钟前',thumb:'sunset',go:'openDetail'},
+  {av:['陈','#DFF6EC','#0B7E52','陈思远、林青云、苏墨 等 5 人'],act:'赞了你的动态',what:'单调栈三连的通用套路',tm:'2 小时前',thumb:'code'},
+  {av:['王','#E8F3FF','#2F7DE0','王立'],act:'赞了你的资料',what:'数据结构期末复习思维导图',tm:'昨天 21:04',thumb:'pdf'}],
+ comment:[
+  {av:['李','#DFF6EC','#0B7E52','李想'],act:'评论了你的提问',what:'「建议先去旁听一节中级会计再决定」',tm:'35 分钟前',re:'回复'},
+  {av:['周','#FFF3DC','#B26A00','周晓'],act:'评论了你的动态',what:'「这个机位周末去试试！」',tm:'2 小时前',re:'回复',go:'openDetail'},
+  {av:['陈','#DFF6EC','#0B7E52','陈思远'],act:'回复了你的评论',what:'「周五分享会见，我把题解带上」',tm:'昨天 18:22',re:'回复'}],
+ follow:[
+  {av:['苏','#FFFFFF/#5C6B64','苏墨'],act:'关注了你',what:'经济学院 · 你们都在「论文互助圈」',tm:'1 小时前',follow:true},
+  {av:['李','#DFF6EC/#0B7E52','李想'],act:'关注了你',what:'会计学院 · 回答过你的提问',tm:'昨天',follow:true},
+  {av:['郑','#FFF3DC/#B26A00','郑雨桐'],act:'关注了你',what:'会计学院 · 3 个共同圈子',tm:'周四',follow:true,followed:true}]
+};
+let curNt='like';
+function ntRowHtml(n){
+ const avParts=n.av[2].split('/');
+ const avStyle=avParts.length>1?('background:'+avParts[0]+';color:'+avParts[1]):('background:'+n.av[2]+';color:#fff');
+ let right='';
+ if(n.thumb)right=NT_THUMB[n.thumb];
+ else if(n.follow)right='<div class="nt-act'+(n.followed?' followed':'')+'" onclick="event.stopPropagation();toggleFollowBack(this)">'+(n.followed?'已回关':'回关')+'</div>';
+ else if(n.re)right='<div class="nt-act re" onclick="event.stopPropagation();toast(\'原型：回复 '+n.av[3].slice(0,1)+'同学\')">'+n.re+'</div>';
+ return '<div class="nt-row" onclick="'+(n.go?n.go+'();closeNt()':"toast('原型：进入对应内容')")+'"><div class="nt-ava" style="'+avStyle+'">'+n.av[0]+'</div><div class="nt-main"><b>'+n.av[3]+'</b> '+n.act+'<div class="what">'+n.what+'</div><div class="tm">'+n.tm+'</div></div>'+right+'</div>';
+}
+function renderNt(){
+ document.getElementById('ntPane').innerHTML=NTS[curNt].map(ntRowHtml).join('')||'<div class="cd-empty">暂无新互动</div>';
+ document.querySelectorAll('#ntTabs .seg-t').forEach(t=>t.classList.toggle('on',t.dataset.t===curNt));
+}
+function openNt(kind){
+ curNt=kind||'like';renderNt();
+ const o=document.getElementById('ntOverlay');
+ o.classList.add('show');requestAnimationFrame(()=>requestAnimationFrame(()=>o.classList.add('in')));
+}
+function closeNt(){const o=document.getElementById('ntOverlay');o.classList.remove('in');setTimeout(()=>o.classList.remove('show'),300);}
+function switchNtTab(t){curNt=t;renderNt();}
+function toggleFollowBack(el){
+ const on=el.classList.toggle('followed');
+ el.textContent=on?'已回关':'回关';
+ toast(on?'已回关':'原型：关注对方');
+}
+
+// toast
+let toastTimer;
+function toast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),1600);
+}
+</script>
+</body>
+</html>

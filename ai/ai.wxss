@@ -1,0 +1,30 @@
+/* 学伴页：fixed 三段式（与原型沉浸态一致） */
+.ai-page { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: #fff; display: flex; flex-direction: column; z-index: 55; padding-top: env(safe-area-inset-top); }
+
+/* 页头：编辑式排版（L2 标题 + 在线呼吸点注脚），徽标带品牌投影 */
+.ai-head { padding: 8rpx 32rpx 20rpx; display: flex; align-items: center; gap: 22rpx; flex-shrink: 0; }
+.ai-badge { box-shadow: 0 8rpx 18rpx -10rpx rgba(15,69,79,.45); }
+.ai-title-wrap { min-width: 0; }
+.ai-title { font-size: 34rpx; font-weight: 800; letter-spacing: 1rpx; color: var(--ink-brush); }
+.ai-sub { display: flex; align-items: center; gap: 10rpx; font-size: 20rpx; color: var(--text3); margin-top: 5rpx; letter-spacing: 1rpx; }
+.ai-dot { width: 10rpx; height: 10rpx; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4rpx rgba(23,90,103,.14); animation: ai-breathe 2.4s var(--ease) infinite; }
+@keyframes ai-breathe { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+
+.mp-scroll { flex: 1; min-height: 0; }
+.ps { flex: 1; min-width: 0; font-size: 24rpx; line-height: 1.5; }
+.tail { display: block; margin-top: 15rpx; }
+.chat-inner { padding: 29rpx 29rpx 51rpx; }
+/* 首屏欢迎块：内容从顶部顺排，不占底部留白 */
+.ai-welcome { padding-bottom: 0; }
+
+/* 输入 dock：浮起面板（去硬分割线）；输入框浅青灰底、聚焦浮白 + 品牌光环；发送钮品牌投影 */
+.ai-dock { border-top: none; box-shadow: 0 -12rpx 32rpx -24rpx rgba(18,51,59,.16); }
+.dock-input ._input { background: var(--bg); border-color: transparent; transition: background-color .2s var(--ease), box-shadow .2s var(--ease); }
+.dock-input ._input.on { background: var(--card); box-shadow: inset 0 0 0 2rpx rgba(23,90,103,.35), 0 0 0 6rpx rgba(23,90,103,.08); }
+.dock-input .send { box-shadow: 0 10rpx 22rpx -10rpx rgba(23,90,103,.55); }
+
+.ai-dock, .chat-input { transition: padding-bottom .22s var(--ease); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-dot { animation: none; }
+}

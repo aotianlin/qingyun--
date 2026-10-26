@@ -1,0 +1,215 @@
+[
+  {
+    "page": "pages/ai/ai.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/chat/chat.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/checkin/checkin.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/checkin-create/checkin-create.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/checkin-detail/checkin-detail.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/circle-detail/circle-detail.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/circles/circles.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/circles-all/circles-all.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/discover/discover.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/dm/dm.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/drafts/drafts.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/favorites/favorites.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/follows/follows.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/login/login.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/messages/messages.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/mine/mine.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/my-resources/my-resources.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/notifications/notifications.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/post-create/post-create.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/profile-edit/profile-edit.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/qa/qa.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/resource-detail/resource-detail.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/resource-upload/resource-upload.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/resources/resources.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/settings/settings.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  },
+  {
+    "page": "pages/space-create/space-create.js",
+    "skipped": "无 onPageSc"
+  },
+  {
+    "page": "pages/user/user.js",
+    "events": 240,
+    "setDataCalls": 168,
+    "byKey": {
+      "navHide": 168
+    },
+    "transitions": 2,
+    "stateHash": "6bcc14f3d772",
+    "finalNavHide": false
+  }
+]

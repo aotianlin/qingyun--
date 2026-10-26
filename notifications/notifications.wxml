@@ -1,0 +1,29 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">互动消息</text>
+  </view>
+  <view class="seg rise" style="--i:1;margin-top:12px">
+    <view class="seg-t {{tab === 'like' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onTab" data-t="like">赞</view>
+    <view class="seg-t {{tab === 'comment' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onTab" data-t="comment">评论</view>
+    <view class="seg-t {{tab === 'follow' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onTab" data-t="follow">关注</view>
+  </view>
+  <view class="nt-list rise" style="--i:2">
+      <view class="nt-row" hover-class="press" wx:for="{{rows}}" wx:key="index" bind:tap="rowTap" data-i="{{index}}">
+        <view class="nt-ava" style="background:{{item.bg}};color:{{item.fg}};{{item.border ? 'border:1.5px solid #EDF0EC' : ''}}">{{item.ch}}</view>
+        <view class="nt-main">
+          <view><text class="_b">{{item.who}}</text> {{item.act}}</view>
+          <view class="what">{{item.what}}</view>
+          <view class="tm">{{item.tm}}</view>
+        </view>
+        <view wx:if="{{item.thumb === 'sunset'}}" class="nt-thumb" style="background:#FDF3E3"><view class="icu-49"/></view>
+        <view wx:elif="{{item.thumb === 'code'}}" class="nt-thumb" style="background:#EDF2EE"><view class="icu-46"/></view>
+        <view wx:elif="{{item.thumb === 'pdf'}}" class="nt-thumb" style="background:#DCE9E9;color:#0F454F;font-size:10.5px;font-weight:800">PDF</view>
+        <view wx:elif="{{item.follow}}" class="nt-act {{item.followed ? 'followed' : ''}}" hover-class="press-sm" catch:tap="toggleFollow" data-i="{{index}}">{{item.followed ? "已回关" : "回关"}}</view>
+        <view wx:else class="nt-act re" hover-class="press-sm" catch:tap="reply">{{item.re}}</view>
+      </view>
+    </view>
+</scroll-view>
+
+<post-detail id="pd" bind:tip="onCompTip"/>
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

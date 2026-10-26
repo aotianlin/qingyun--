@@ -1,0 +1,10 @@
+@import "../../styles/form.wxss";
+.rd-name { display: block; line-height: 1.45; }
+.rd-uploader { margin: 0 20px 4px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+.ru-main { flex: 1; min-width: 0; }
+.rd-preview { margin: 0 20px 4px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; }
+.rp-p { font-size: 13.5px; line-height: 1.8; color: #2C3A33; margin-bottom: 10px; }
+.rp-more { text-align: center; font-size: 11px; color: var(--text3); margin-top: 4px; }
+/* 收藏：与帖子详情底栏同款横排动作（小星 + 文字同行） */
+.rd-fav { flex-shrink: 0; display: flex; align-items: center; gap: 8rpx; height: 72rpx; padding: 0 26rpx; border-radius: var(--r-full); background: var(--bg); border: 1px solid var(--line); color: var(--text2); font-size: 22rpx; }
+.rd-fav.on { color: var(--amber); border-color: rgba(232,150,12,.45); }

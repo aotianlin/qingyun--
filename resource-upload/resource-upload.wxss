@@ -1,0 +1,16 @@
+@import "../../styles/form.wxss";
+.pick-zone { margin: 16px 16px 0; height: 200px; border: 2px dashed var(--text3); border-radius: var(--r-lg); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: var(--text3); }
+.pick-zone .icu-35 { width: 40px; height: 40px; }
+.pz-t { font-size: 15px; font-weight: 700; color: var(--text2); }
+.pz-s { font-size: 11px; padding: 0 30px; text-align: center; }
+.file-card { display: flex; align-items: center; gap: 12px; }
+.file-card .file-chip { width: 46px; height: 46px; border-radius: 12px; background: var(--primary-soft); color: var(--primary-deep); font-size: 11px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.fc-main { flex: 1; min-width: 0; }
+.fc-name { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fc-meta { font-size: 11px; color: var(--text3); margin-top: 3px; }
+.fc-change { flex-shrink: 0; font-size: 12px; color: var(--primary-deep); font-weight: 600; }
+.ok-c { color: var(--primary); }
+.detect-row { display: flex; align-items: baseline; gap: 8px; padding: 10px 12px; background: var(--primary-softer); border-radius: 10px; }
+.d-course { font-size: 15px; font-weight: 800; color: var(--primary-deep); }
+.d-chapter { font-size: 12px; color: var(--text2); flex: 1; }
+.d-change { font-size: 11px; color: var(--text3); }

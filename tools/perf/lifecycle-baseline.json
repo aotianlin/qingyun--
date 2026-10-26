@@ -1,0 +1,277 @@
+[
+  {
+    "page": "pages/ai/ai.js",
+    "onLoad": 1,
+    "onShow1": 1,
+    "onShow2": 1,
+    "errs": [],
+    "dataHash": "bac177078943",
+    "showKeys": [
+      "me"
+    ]
+  },
+  {
+    "page": "pages/chat/chat.js",
+    "onLoad": 0,
+    "onShow1": 1,
+    "onShow2": 1,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'key')"
+    ],
+    "dataHash": "e2e161356725",
+    "showKeys": [
+      "me"
+    ]
+  },
+  {
+    "page": "pages/checkin/checkin.js",
+    "onLoad": 2,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "1a3a75dd0891",
+    "showKeys": []
+  },
+  {
+    "page": "pages/checkin-create/checkin-create.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "274adbdd3773",
+    "showKeys": []
+  },
+  {
+    "page": "pages/checkin-detail/checkin-detail.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'id')"
+    ],
+    "dataHash": "a7c7550856d6",
+    "showKeys": []
+  },
+  {
+    "page": "pages/circle-detail/circle-detail.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'key')"
+    ],
+    "dataHash": "0fbd88b378e8",
+    "showKeys": []
+  },
+  {
+    "page": "pages/circles/circles.js",
+    "onLoad": 1,
+    "onShow1": 1,
+    "onShow2": 1,
+    "errs": [],
+    "dataHash": "cb5c6f6265a8",
+    "showKeys": [
+      "hot,hotAll"
+    ]
+  },
+  {
+    "page": "pages/circles-all/circles-all.js",
+    "onLoad": 2,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "1ac7a980f1f7",
+    "showKeys": []
+  },
+  {
+    "page": "pages/discover/discover.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "926e89b58c5e",
+    "showKeys": []
+  },
+  {
+    "page": "pages/dm/dm.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'key')"
+    ],
+    "dataHash": "609702982e30",
+    "showKeys": []
+  },
+  {
+    "page": "pages/drafts/drafts.js",
+    "onLoad": 1,
+    "onShow1": 1,
+    "onShow2": 1,
+    "errs": [],
+    "dataHash": "20bfc7358fe3",
+    "showKeys": [
+      "list"
+    ]
+  },
+  {
+    "page": "pages/favorites/favorites.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "c8e368e85994",
+    "showKeys": []
+  },
+  {
+    "page": "pages/follows/follows.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "0eaca47b5b8b",
+    "showKeys": []
+  },
+  {
+    "page": "pages/login/login.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'mode')"
+    ],
+    "dataHash": "91700b9424d9",
+    "showKeys": []
+  },
+  {
+    "page": "pages/messages/messages.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "44c8980d4850",
+    "showKeys": []
+  },
+  {
+    "page": "pages/mine/mine.js",
+    "onLoad": 2,
+    "onShow1": 1,
+    "onShow2": 1,
+    "errs": [],
+    "dataHash": "ebd70784609e",
+    "showKeys": [
+      "avatarUrl,draftCount,meBg,meBgUrl,meCh,meName"
+    ]
+  },
+  {
+    "page": "pages/my-resources/my-resources.js",
+    "onLoad": 2,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "889f3d021148",
+    "showKeys": []
+  },
+  {
+    "page": "pages/notifications/notifications.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'kind')"
+    ],
+    "dataHash": "2bc0f0c9d650",
+    "showKeys": []
+  },
+  {
+    "page": "pages/post-create/post-create.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'mode')"
+    ],
+    "dataHash": "81aedc503f3e",
+    "showKeys": []
+  },
+  {
+    "page": "pages/profile-edit/profile-edit.js",
+    "onLoad": 2,
+    "onShow1": 1,
+    "onShow2": 1,
+    "errs": [],
+    "dataHash": "e2cae8c6f0d2",
+    "showKeys": [
+      "avatarUrl,bg,bgUrl,bio,ch,name"
+    ]
+  },
+  {
+    "page": "pages/qa/qa.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'key')"
+    ],
+    "dataHash": "0e309a6747d4",
+    "showKeys": []
+  },
+  {
+    "page": "pages/resource-detail/resource-detail.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'id')"
+    ],
+    "dataHash": "5b3a6e30303f",
+    "showKeys": []
+  },
+  {
+    "page": "pages/resource-upload/resource-upload.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "2a2e5be6a5da",
+    "showKeys": []
+  },
+  {
+    "page": "pages/resources/resources.js",
+    "onLoad": 2,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "58ff1b65ca24",
+    "showKeys": []
+  },
+  {
+    "page": "pages/settings/settings.js",
+    "onLoad": 2,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "2d91904780fb",
+    "showKeys": []
+  },
+  {
+    "page": "pages/space-create/space-create.js",
+    "onLoad": 1,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [],
+    "dataHash": "e9419644333a",
+    "showKeys": []
+  },
+  {
+    "page": "pages/user/user.js",
+    "onLoad": 0,
+    "onShow1": 0,
+    "onShow2": 0,
+    "errs": [
+      "onLoad: Cannot read properties of undefined (reading 'name')"
+    ],
+    "dataHash": "a95c228cb88f",
+    "showKeys": []
+  }
+]

@@ -1,0 +1,11 @@
+@import "../../styles/form.wxss";
+.big-ring-card { margin: 14px 20px 4px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 18px; display: flex; align-items: center; gap: 16px; }
+.big-ring { transform: scale(1.6); transform-origin: left center; margin: 10px 14px 10px 10px; }
+.br-n { font-size: 16px; font-weight: 800; }
+.br-em { color: var(--primary); font-size: 22px; }
+.br-s { font-size: 11px; color: var(--text3); margin-top: 4px; }
+.ck-done-row { display: flex; align-items: center; gap: 12px; flex: 1; }
+.ck-done-tag { flex: 1; height: 46px; line-height: 46px; text-align: center; border-radius: 23px; background: var(--primary-softer); color: var(--primary-deep); font-size: 15px; font-weight: 700; }
+.ck-share { flex-shrink: 0; width: auto; font-size: 13px; color: var(--text3); background: transparent; padding: 0; margin: 0; line-height: 1.6; }
+.ck-share::after { border: none; }
+.tl-text { font-size: 13.5px; line-height: 1.55; margin-top: 4px; color: var(--text1); }

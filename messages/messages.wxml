@@ -1,0 +1,38 @@
+<view class="screen">
+  <view class="page-head rise" style="--i:0;padding-top:{{sb + 4}}px">
+    <view class="head-row">
+      <view><view class="greet-sub">互动与会话</view><view class="greet-title _h1">消息</view></view>
+    </view>
+  </view>
+  <view class="interact-row rise" style="--i:1">
+    <view class="icard alert" hover-class="press" bind:tap="goNt" data-k="like">
+      <view class="icu-12"/>
+      <text class="_b">12</text><text class="_s">新的赞</text>
+    </view>
+    <view class="icard" hover-class="press" bind:tap="goNt" data-k="comment">
+      <view class="icu-13"/>
+      <text class="_b">5</text><text class="_s">新评论</text>
+    </view>
+    <view class="icard" hover-class="press" bind:tap="goNt" data-k="follow">
+      <view class="icu-14"/>
+      <text class="_b">3</text><text class="_s">新关注</text>
+    </view>
+  </view>
+  <view class="sec-title rise" style="--i:2">
+    <text class="_b">私信</text>
+    <text class="sec-act {{hasUnread ? '' : 'muted'}}" hover-class="press-sm" bind:tap="readAll">全部已读</text>
+  </view>
+  <view class="convs rise" style="--i:3">
+    <view class="conv" hover-class="press-conv" wx:for="{{convs}}" wx:key="k" bind:tap="goDM" data-k="{{item.k}}">
+      <view class="cv" style="background:{{item.bg}};color:{{item.fg}}{{item.border ? ';border:1.5px solid #EDF0EC' : ''}}">{{item.ch}}</view>
+      <view class="ci">
+        <view class="ct"><text class="_b">{{item.name}}</text><text class="_em">{{item.tm}}</text></view>
+        <view class="_p">{{item.msg}}</view>
+      </view>
+      <text class="unread" wx:if="{{item.unread}}">{{item.unread}}</text>
+    </view>
+  </view>
+</view>
+
+<tab-bar current="messages"/>
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

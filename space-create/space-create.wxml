@@ -1,0 +1,45 @@
+<view class="form-page" style="padding-top:{{sb}}px">
+  <view class="mine-nav rise" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">创建圈子</text>
+  </view>
+
+  <scroll-view scroll-y class="form-scroll">
+    <!-- 封面预览 -->
+    <view class="sc-preview rise" style="--i:1;background:{{cover}}">
+      <text class="sc-ch">{{name ? name[0] : '圈'}}</text>
+      <text class="sc-name">{{name || '圈子名称'}}</text>
+    </view>
+    <view class="form-card rise" style="--i:2">
+      <view class="form-label"><text>封面色</text><text class="cnt">六选一</text></view>
+      <view class="sc-covers">
+        <view class="sc-dot {{cover === item ? 'on' : ''}}" wx:for="{{covers}}" wx:key="*this" style="background:{{item}}" hover-class="press-sm" bind:tap="pickCover" data-c="{{item}}"></view>
+      </view>
+    </view>
+
+    <view class="form-card rise" style="--i:3">
+      <view class="form-label"><text>圈子名称</text><text class="cnt">{{name.length}}/12</text></view>
+      <input class="form-input" value="{{name}}" bindinput="onName" placeholder="例如：算法自习室 / 四六级冲分营" placeholder-class="form-ph" maxlength="12"/>
+    </view>
+
+    <view class="form-card rise" style="--i:4">
+      <view class="form-label"><text>分类</text></view>
+      <view class="form-chips">
+        <view class="form-chip {{cat === item ? 'on' : ''}}" wx:for="{{cats}}" wx:key="*this" hover-class="press-sm" bind:tap="onCat" data-c="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="form-card rise" style="--i:5">
+      <view class="form-label"><text>简介</text><text class="cnt">{{desc.length}}/50</text></view>
+      <textarea class="form-textarea" style="min-height:70px" value="{{desc}}" bindinput="onDesc" maxlength="50" placeholder="一句话说清这个圈子做什么、欢迎谁" placeholder-class="form-ph" auto-height/>
+    </view>
+
+    <view style="height:20px"></view>
+  </scroll-view>
+
+  <view class="form-bar rise" style="--i:6">
+    <view class="form-primary {{canSubmit() ? '' : 'disabled'}}" hover-class="press-sm" bind:tap="submit">创建圈子</view>
+  </view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

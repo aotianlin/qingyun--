@@ -1,0 +1,52 @@
+<view class="form-page" style="padding-top:{{sb}}px">
+  <view class="mine-nav rise" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">发起打卡</text>
+  </view>
+
+  <scroll-view scroll-y class="form-scroll">
+    <view class="form-card rise" style="--i:1">
+      <view class="form-label"><text>挑战名称</text></view>
+      <input class="form-input" value="{{name}}" bindinput="onName" placeholder="例如：每日算法打卡 / 考研词汇 50 词" placeholder-class="form-ph" maxlength="12"/>
+    </view>
+
+    <view class="form-card rise" style="--i:2">
+      <view class="form-label">
+        <text>每日目标</text>
+        <text class="cnt ai-link" bind:tap="aiSuggestFlow">{{aiBusy ? 'AI 生成中…' : '✦ AI 帮我定节奏'}}</text>
+      </view>
+      <input class="form-input" value="{{goal}}" bindinput="onGoal" placeholder="想坚持的具体动作" placeholder-class="form-ph"/>
+      <view wx:if="{{aiSuggest}}" class="field-hint" style="color:var(--primary-deep)">{{aiSuggest}}</view>
+    </view>
+
+    <view class="form-card rise" style="--i:3">
+      <view class="form-label"><text>周期</text></view>
+      <view class="bounty-row">
+        <view class="bounty-opt {{period === item ? 'on' : ''}}" wx:for="{{periods}}" wx:key="*this" hover-class="press-sm" bind:tap="onPeriod" data-p="{{item}}">{{item}} 天</view>
+      </view>
+    </view>
+
+    <view class="form-card rise" style="--i:4">
+      <view class="form-label"><text>每日提醒</text></view>
+      <picker mode="time" value="{{remind}}" bindchange="onRemind">
+        <view class="form-input remind-row">{{remind}} <text class="_s">›</text></view>
+      </picker>
+    </view>
+
+    <view class="form-card rise" style="--i:5">
+      <view class="form-label"><text>可见范围</text></view>
+      <view class="seg3">
+        <view class="s {{scope === item[0] ? 'on' : ''}}" wx:for="{{scopes}}" wx:key="index" hover-class="press-sm" bind:tap="onScope" data-v="{{item[0]}}">{{item[1]}}</view>
+      </view>
+      <view class="field-hint">公开挑战会被同学围观加油，坚持率提升 2.3 倍</view>
+    </view>
+
+    <view style="height:20px"></view>
+  </scroll-view>
+
+  <view class="form-bar rise" style="--i:6">
+    <view class="form-primary {{canSubmit() ? '' : 'disabled'}}" hover-class="press-sm" bind:tap="submit">发起挑战</view>
+  </view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

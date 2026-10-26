@@ -1,0 +1,42 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">草稿箱</text>
+  </view>
+
+  <block wx:if="{{list.length}}">
+    <view class="sec-title rise" style="--i:1">
+      <text class="_b">{{list.length}} 篇草稿</text>
+      <text class="sec-act" hover-class="press-sm" bind:tap="clearAll">清空</text>
+    </view>
+    <view class="dl-list rise" style="--i:2">
+      <view class="dl-card" wx:for="{{list}}" wx:key="id" hover-class="press" bind:tap="openDraft" data-id="{{item.id}}">
+        <view class="dl-top">
+          <text class="dl-type">{{item.typeLabel}}</text>
+          <text class="dl-time">{{item.time}}</text>
+        </view>
+        <view class="dl-text">{{item.excerpt}}</view>
+        <view class="dl-tags" wx:if="{{item.topics.length}}">
+          <text class="dl-tag" wx:for="{{item.topics}}" wx:for-item="t" wx:key="*this"># {{t}}</text>
+        </view>
+        <view class="dl-foot">
+          <text class="dl-edit">继续编辑 ›</text>
+          <text class="dl-del" hover-class="press-sm" catch:tap="removeDraft" data-id="{{item.id}}">删除</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view wx:else class="dl-empty rise" style="--i:1">
+    <view class="dl-empty-art" aria-label="远山、松枝与飞鹤水墨画">
+      <view class="dl-empty-mountain"/>
+      <view class="motif-pine dl-empty-pine"/>
+      <view class="dl-empty-crane"/>
+    </view>
+    <view class="dl-empty-title">草稿箱是空的</view>
+    <view class="dl-empty-sub">写不下去时先存草稿，灵感来了再接着写</view>
+    <view class="btn-primary dl-empty-btn" hover-class="press-sm" bind:tap="goCreate">去写点什么</view>
+  </view>
+</scroll-view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

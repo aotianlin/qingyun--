@@ -1,0 +1,64 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">资料广场</text>
+  </view>
+
+  <view class="rise sd-host" style="--i:1;padding:12px 16px 0">
+    <view wx:if="{{!searchOpen}}" class="nebula" hover-class="press-sm" bind:tap="openSearch">
+      <view class="nb-in nb-static"><text class="nb-label">搜资料 · 课程 · 文件名</text></view>
+    </view>
+    <view wx:else class="nebula on nb-live">
+      <input class="nb-in" value="{{kw}}" bindinput="onKw" bindconfirm="runSearch" confirm-type="search" bindfocus="onNbF" bindblur="onNbB" placeholder="搜资料 · 课程 · 文件名" placeholder-class="nb-ph2"/>
+      <block wx:if="{{sdFocus}}">
+        <view class="nb-p" style="--x:.2;--y:-.4;--delay:.1s"/>
+          <view class="nb-p" style="--x:.5;--y:-.2;--delay:.3s"/>
+          <view class="nb-p" style="--x:.3;--y:.3;--delay:.5s"/>
+          <view class="nb-p" style="--x:.7;--y:.1;--delay:.2s"/>
+          <view class="nb-p" style="--x:.1;--y:-.7;--delay:.4s"/>
+          <view class="nb-p" style="--x:.6;--y:.4;--delay:.6s"/>
+      </block>
+    </view>
+  </view>
+
+    <view class="sd-mask {{searchOpen ? 'show' : ''}}" bind:tap="closeSearch"></view>
+    <view class="sd-panel {{searchOpen ? 'show' : ''}}" style="top:{{sdTop}}px">
+      <block wx:if="{{!kw}}">
+        <view class="sd-hd"><text class="_b">热门搜索</text><text class="_s">实时</text></view>
+        <view class="sd-chips">
+          <view class="sd-chip" hover-class="press-sm" wx:for="{{sdHot}}" wx:key="*this" bind:tap="onHot" data-k="{{item}}">🔥 {{item}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="sd-hd"><text class="_b">“{{kw}}”</text><text class="_s">{{count}} 条结果</text></view>
+        <scroll-view scroll-y class="sd-scroll">
+          <view class="sd-sec" wx:if="{{rRes.length}}"><view class="sd-sec-t">资料</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rRes}}" wx:key="name" bind:tap="goDetail" data-id="{{item.id}}"><view class="sd-r-th" style="background:{{item.amber ? '#FFF3DC' : '#DCE9E9'}};color:{{item.amber ? '#B26A00' : '#0F454F'}}">{{item.ext}}</view><view><view class="sd-r-t">{{item.name}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view wx:if="{{!count}}" class="sd-empty">没有找到“{{kw}}”相关内容</view>
+        </scroll-view>
+      </block>
+    </view>
+
+  <scroll-view scroll-x class="hscroll rise" style="--i:2">
+    <view class="all-chips" style="padding:14px 20px 8px">
+      <view hover-class="press-sm" class="chip {{cat === item ? 'on' : ''}}" wx:for="{{cats}}" wx:key="*this" bind:tap="onCat" data-c="{{item}}">{{item}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="qa-sort rise" style="--i:3;padding:0 22px 8px">
+    <text class="{{sort === 'hot' ? 'on' : ''}}" bind:tap="onSort" data-s="hot">按热度</text>
+    <text class="{{sort === 'new' ? 'on' : ''}}" bind:tap="onSort" data-s="new">最新</text>
+  </view>
+
+  <view class="rise" style="--i:4;padding:0 20px 30px">
+    <view class="feed-row" hover-class="press" wx:for="{{list}}" wx:key="id" bind:tap="goDetail" data-id="{{item.id}}">
+      <view class="fr-thumb" style="background:{{item.amber ? '#FFF3DC' : '#DCE9E9'}};color:{{item.amber ? '#B26A00' : '#0F454F'}};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:12px">{{item.ext}}</view>
+      <view class="fr-info">
+        <text class="_b">{{item.name}}</text>
+        <text class="_s">{{item.course}} · {{item.cat}} · {{item.meta}}</text>
+      </view>
+      <text class="w-pill dl"><view class="icu-8"/>下载</text>
+    </view>
+  </view>
+</scroll-view>

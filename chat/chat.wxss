@@ -1,0 +1,5 @@
+.chat-page { position: fixed; left: 0; top: 0; right: 0; bottom: 0; transform: none; opacity: 1; pointer-events: auto; padding-top: env(safe-area-inset-top); }
+.mp-scroll3 { flex: 1; min-height: 0; }
+.ps { flex: 1; min-width: 0; font-size: 24rpx; line-height: 1.5; }
+.tail { display: block; margin-top: 15rpx; }
+.chat-inner { padding: 29rpx 29rpx 51rpx; }

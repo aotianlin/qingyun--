@@ -1,0 +1,50 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">{{cd.name}}</text>
+  </view>
+  <view class="cd-hero rise" style="--i:1">
+    <view class="cd-cover" style="background:{{cd.bg}}">{{cd.ch}}</view>
+    <view class="cd-main">
+      <text class="_b">{{cd.name}}</text>
+      <view class="cdp _p">{{cd.desc}}</view>
+      <view class="cd-stats"><text class="_s" wx:for="{{cd.stats}}" wx:key="*this">{{index > 0 ? " · " : ""}}{{item}}</text></view>
+    </view>
+    <view class="cd-join {{cd.joined ? 'joined' : ''}}" hover-class="press-sm" bind:tap="onCdJoin">{{cd.joined ? "去打卡" : "加入圈子"}}</view>
+  </view>
+  <view class="seg rise" style="--i:2">
+    <view class="seg-t {{cdTab === 'feed' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onCdTab" data-t="feed">动态</view>
+    <view class="seg-t {{cdTab === 'res' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onCdTab" data-t="res">资料</view>
+    <view class="seg-t {{cdTab === 'chk' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onCdTab" data-t="chk">打卡</view>
+  </view>
+  <view class="rise" style="--i:3;padding:0 20px 30px">
+      <block wx:if="{{cdTab === 'feed'}}">
+        <view class="feed-row" hover-class="press" wx:for="{{cd.feed}}" wx:key="index" bind:tap="goFeed" data-kind="{{item[0]}}">
+          <view class="fr-thumb" style="background:{{item[0] === 'code' ? '#EDF2EE' : (item[0] === 'qa' ? '#E9EBFA' : (item[0] === 'chk' ? '#FFEFE8' : (item[0] === 'tag' ? '#E4F2EA' : '#FFF3DC')))}};color:{{item[0] === 'code' ? '#4E7A61' : (item[0] === 'qa' ? '#3641C4' : (item[0] === 'chk' ? '#F26430' : (item[0] === 'tag' ? '#0F454F' : '#B26A00')))}};display:flex;align-items:center;justify-content:center">
+            <view wx:if="{{item[0] === 'code'}}" class="icu-46"/>
+            <text wx:else class="_s" style="font-size:11px;font-weight:800">{{item[0] === 'qa' ? '？' : item[0] === 'doc' ? 'MD' : item[0] === 'chk' ? '✓' : item[0] === 'tag' ? '跳' : 'MD'}}</text>
+          </view>
+          <view class="fr-info"><text class="_b">{{item[1]}}</text><text class="_s">{{item[2]}}</text></view>
+          <text class="circle-tag">{{item[3]}}</text>
+        </view>
+      </block>
+      <block wx:elif="{{cdTab === 'res'}}">
+        <view class="feed-row" hover-class="press" wx:for="{{cd.res}}" wx:key="index" bind:tap="goRes">
+          <view class="fr-thumb" style="background:#FFF3DC;color:#B26A00;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:12px">{{item[0]}}</view>
+          <view class="fr-info"><text class="_b">{{item[1]}}</text><text class="_s">{{item[2]}}</text></view>
+          <text class="w-pill dl"><view class="icu-8"/>下载</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="feed-row" hover-class="press" wx:for="{{cd.chk}}" wx:key="name" bind:tap="goChk">
+          <view class="icu {{item.ring}}" style="flex-shrink:0"/>
+          <view class="fr-info"><text class="_b">{{item.name}}</text><text class="_s">{{item.meta}} · 已坚持 {{item.cur}} 天</text></view>
+          <text class="w-pill go">打卡</text>
+        </view>
+        <view wx:if="{{cd.emptyChk}}" class="cd-empty">这个圈子还没有发起打卡，你来发起第一个吧</view>
+      </block>
+    </view>
+</scroll-view>
+
+<post-detail id="pd" bind:tip="onCompTip"/>
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

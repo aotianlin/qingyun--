@@ -1,0 +1,20 @@
+/* 打卡主页 */
+.ck-hero { margin: 14px 20px 4px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 16px; display: flex; align-items: center; justify-content: space-between; }
+.ck-big { font-size: 34px; font-weight: 800; color: var(--primary); line-height: 1; }
+.ck-slash { font-size: 16px; color: var(--text3); font-weight: 600; }
+.ck-cap { font-size: 11px; color: var(--text3); margin-top: 5px; }
+.ck-streak { display: flex; align-items: center; gap: 9px; }
+.ck-fire { font-size: 24px; }
+.ck-streak-n { font-size: 15px; font-weight: 800; }
+.ck-streak-s { font-size: 10.5px; color: var(--text3); }
+.ck-mine { display: flex; gap: 10px; padding: 2px 20px 6px; }
+.ck-mcard { flex-shrink: 0; width: 168px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 14px; display: flex; flex-direction: column; }
+.ck-mcard.done { border-color: rgba(23,90,103,.3); }
+.ck-mring { margin-bottom: 8px; }
+.ck-mname { font-size: 14px; font-weight: 700; }
+.ck-mnote { font-size: 11px; color: var(--text3); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ck-mact { margin-top: 10px; }
+.ck-state { font-size: 11.5px; }
+.ck-state.done { color: var(--primary); font-weight: 700; }
+.ck-state.broke { color: var(--amber); font-weight: 600; }
+.ck-go { height: 30px; line-height: 30px; text-align: center; border-radius: 15px; background: var(--primary); color: #fff; font-size: 12.5px; font-weight: 700; }

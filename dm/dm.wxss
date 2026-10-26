@@ -1,0 +1,4 @@
+/* dm 页布局（原型 #dmOverlay flex 列的页面化实现） */
+.dm-page { position: fixed; left: 0; top: 0; right: 0; bottom: 0; background: #F5F6F8; display: flex; flex-direction: column; z-index: 60; padding-top: env(safe-area-inset-top); }
+.dm-page .dm-head { position: static; flex-shrink: 0; }
+.dm-scroll { flex: 1; min-height: 0; box-sizing: border-box; }

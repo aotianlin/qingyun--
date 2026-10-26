@@ -1,0 +1,52 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">挑战详情</text>
+  </view>
+
+  <!-- 挑战头卡 -->
+  <view class="cd-hero rise" style="--i:1">
+    <view class="cd-cover" style="background:#175A67">{{c.cat === '学习' ? '学' : (c.cat === '运动' ? '跑' : '习')}}</view>
+    <view class="cd-main">
+      <text class="_b">{{c.name}}</text>
+      <view class="cdp _p">发起人 王立 · {{c.meta}}</view>
+      <view class="cd-stats"><text class="_s">{{c.total}} 天周期</text><text class="_s">每日提醒 22:00</text></view>
+    </view>
+  </view>
+
+  <!-- 大进度环 -->
+  <view class="big-ring-card rise" style="--i:2">
+    <view class="icu {{c.ring}} big-ring"></view>
+    <view class="br-text">
+      <view class="br-n">已坚持 <text class="br-em">{{c.cur}}</text> / {{c.total}} 天</view>
+      <view class="br-s">完成 {{c.total}} 天可点亮「{{c.name}}」勋章</view>
+    </view>
+  </view>
+
+  <!-- 今日打卡 -->
+  <view class="form-bar rise" style="--i:3;position:static;border-top:none;background:transparent;padding:6px 20px 0">
+    <view wx:if="{{c.today !== 'done'}}" class="form-primary" hover-class="press-sm" bind:tap="doCheckin">今日打卡</view>
+    <view wx:else class="ck-done-row">
+      <view class="cdone-crane"/>
+      <view class="ck-done-tag">今日已打卡 · 坚持第 {{c.cur}} 天</view>
+      <view class="cdone-seal">持</view>
+      <button class="ck-share" open-type="share" hover-class="press-sm">分享战绩 ›</button>
+    </view>
+  </view>
+
+  <!-- 成员动态 -->
+  <view class="sec-title rise" style="--i:4"><text class="_b">成员动态</text><text class="_s">128 人参与中</text></view>
+  <view class="rise" style="--i:5;padding:0 20px 30px">
+    <view class="feed-row" wx:for="{{timeline}}" wx:key="tm" style="align-items:flex-start">
+      <view class="nt-ava" style="background:{{item.bg}};color:{{item.fg}};{{item.border ? 'border:1.5px solid #EDF0EC' : ''}}">{{item.ch}}</view>
+      <view class="fr-info" style="flex:1">
+        <view><text class="_b">{{item.who}}</text> <text class="_s">{{item.tm}}</text></view>
+        <view class="tl-text">{{item.text}}</view>
+      </view>
+    </view>
+    <view wx:if="{{hasMore}}" class="cd-empty" hover-class="press-sm" bind:tap="loadMore">加载更多动态…</view>
+    <view wx:else class="cd-empty">已经到底了</view>
+  </view>
+</scroll-view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

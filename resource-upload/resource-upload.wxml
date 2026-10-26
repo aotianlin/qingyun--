@@ -1,0 +1,59 @@
+<view class="form-page" style="padding-top:{{sb}}px">
+  <view class="mine-nav rise" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">传资料</text>
+  </view>
+
+  <scroll-view scroll-y class="form-scroll">
+    <view wx:if="{{!file}}" class="pick-zone rise" style="--i:1" hover-class="press-sm" bind:tap="chooseFile">
+      <view class="icu-35"/>
+      <view class="pz-t">点击选择文件</view>
+      <view class="pz-s">讲义 · 真题 · 笔记 · 模板，支持 PDF / DOC / XLS / PPT</view>
+    </view>
+
+    <block wx:if="{{file}}">
+      <view class="form-card file-card rise" style="--i:1">
+        <view class="file-chip">{{file.ext}}</view>
+        <view class="fc-main">
+          <view class="fc-name">{{file.name}}</view>
+          <view class="fc-meta">{{file.size}}</view>
+        </view>
+        <view class="fc-change" hover-class="press-sm" bind:tap="chooseFile">更换</view>
+      </view>
+
+      <view class="form-card rise" style="--i:2" wx:if="{{detect}}">
+        <view class="form-label"><text>课程识别</text><text class="cnt ok-c">✓ 已识别</text></view>
+        <picker mode="selector" range="{{courses}}" bindchange="onCourse">
+          <view class="detect-row" hover-class="press-sm">
+            <text class="d-course">{{detect.course}}</text>
+            <text class="d-chapter">{{detect.chapter}}</text>
+            <text class="d-change">修改 ›</text>
+          </view>
+        </picker>
+        <view class="field-hint">资料将自动归入课程，同课同学更容易找到</view>
+      </view>
+
+      <view class="form-card rise" style="--i:3">
+        <view class="form-label"><text>可见范围</text></view>
+        <view class="seg3">
+          <view class="s {{scope === item[0] ? 'on' : ''}}" wx:for="{{scopes}}" wx:key="index" hover-class="press-sm" bind:tap="onScope" data-v="{{item[0]}}">{{item[1]}}</view>
+        </view>
+      </view>
+
+      <view class="form-card rise" style="--i:4">
+        <view class="form-label"><text>简介（可选）</text><text class="cnt">{{desc.length}}/200</text></view>
+        <textarea class="form-textarea" style="min-height:80px" value="{{desc}}" bindinput="onDesc" maxlength="200" placeholder="一句话说清这份资料的价值，例如：覆盖第 1-8 章，标注了近三年考点" placeholder-class="form-ph" auto-height/>
+      </view>
+    </block>
+
+    <view style="height:20px"></view>
+  </scroll-view>
+
+  <view class="form-bar rise" style="--i:5">
+    <view class="form-primary {{canSubmit() ? '' : 'disabled'}}" hover-class="press-sm" bind:tap="submit">
+      {{submitting ? '上传中…' : '上传资料'}}
+    </view>
+  </view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

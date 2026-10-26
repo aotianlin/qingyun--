@@ -1,0 +1,19 @@
+/* 草稿箱：卡片列表 + 水墨空状态 */
+.dl-list { padding: 0 32rpx 56rpx; }
+.dl-card { background: var(--card); border-radius: var(--r-xl); box-shadow: var(--shadow-1); padding: 28rpx; margin-bottom: 16rpx; }
+.dl-top { display: flex; align-items: center; justify-content: space-between; }
+.dl-type { font-size: 20rpx; letter-spacing: 1rpx; color: var(--primary-deep); background: var(--primary-softer); border-radius: var(--r-sm); padding: 4rpx 12rpx; }
+.dl-time { font-size: 20rpx; color: var(--text3); letter-spacing: 1rpx; }
+.dl-text { font-size: 26rpx; line-height: 1.6; color: var(--text1); margin-top: 16rpx; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-wrap: pretty; }
+.dl-tags { display: flex; flex-wrap: wrap; gap: 12rpx; margin-top: 16rpx; }
+.dl-tag { font-size: 20rpx; color: var(--text2); background: var(--bg); border-radius: var(--r-sm); padding: 4rpx 12rpx; }
+.dl-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 20rpx; padding-top: 16rpx; border-top: 2rpx solid var(--line); }
+.dl-edit { font-size: 22rpx; color: var(--primary-deep); font-weight: 600; letter-spacing: 1rpx; }
+.dl-del { font-size: 22rpx; color: var(--text3); padding: 8rpx 0 8rpx 32rpx; }
+
+/* 空状态三件套：远山松枝小鹤 + 引导文案 + 主按钮 */
+.dl-empty { padding: 120rpx 64rpx 0; text-align: center; }
+.dl-empty-art { width: 260rpx; height: 182rpx; margin: 0 auto 24rpx; background-repeat: no-repeat; background-position: center; background-size: contain; background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20140%22%3E%3Cpath%20fill%3D%22%23175A67%22%20fill-opacity%3D%22.14%22%20d%3D%22M0%2096%20Q36%2062%2074%2086%20Q104%20106%20136%2078%20Q168%2050%20200%2082%20L200%20140%20L0%20140%20Z%22%2F%3E%3Cpath%20fill%3D%22%23175A67%22%20fill-opacity%3D%22.28%22%20d%3D%22M0%20116%20Q48%2088%2092%20108%20Q136%20126%20170%20102%20Q186%2092%20200%20104%20L200%20140%20L0%20140%20Z%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23175A67%22%20stroke-opacity%3D%22.55%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M34%20128%20Q64%20118%20106%20104%22%2F%3E%3Cpath%20d%3D%22M46%20123%20L40%20110%20M58%20119%20L54%20106%20M72%20115%20L69%20102%20M86%20110%20L84%2098%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); }
+.dl-empty-title { font-size: 32rpx; font-weight: 700; color: var(--ink-brush); letter-spacing: 1rpx; }
+.dl-empty-sub { font-size: 24rpx; color: var(--text3); line-height: 1.6; margin-top: 12rpx; }
+.dl-empty-btn { margin-top: 40rpx; height: 80rpx; line-height: 80rpx; text-align: center; border-radius: var(--r-full); color: #fff; font-size: 26rpx; font-weight: 600; letter-spacing: 1rpx; }

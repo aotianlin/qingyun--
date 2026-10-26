@@ -1,0 +1,176 @@
+﻿<view class="screen active discover-page">
+  <view class="page-head" style="padding-top:{{sb}}px">
+    <view class="head-row rise" style="--i:0">
+      <view>
+        <view class="greet-sub">{{dateStr}}</view>
+        <view class="greet-title _h1">校园里的新鲜事</view>
+      </view>
+    </view>
+    <view class="head-tools rise sd-host" style="--i:1">
+      <view wx:if="{{!searchOpen}}" class="nebula" hover-class="press-sm" bind:tap="openSearch" aria-role="button" aria-label="搜索帖子、资料、圈子、同学">
+        <view class="nb-in nb-static">
+          <text class="nb-label">搜帖子 · 资料 · 圈子 · 同学</text>
+          <text class="nb-go">搜索</text>
+        </view>
+      </view>
+      <view wx:else class="nebula on nb-live">
+        <input class="nb-in" value="{{kw}}" bindinput="onKw" bindconfirm="runSearch" confirm-type="search" focus="{{searchOpen}}" bindfocus="onNbF" bindblur="onNbB" placeholder="搜索 全站内容" placeholder-class="nb-ph2" aria-label="搜索全站内容"/>
+        <block wx:if="{{sdFocus}}">
+          <view class="nb-p" aria-hidden="true" style="--x:.2;--y:-.4;--delay:.1s"/>
+          <view class="nb-p" aria-hidden="true" style="--x:.5;--y:-.2;--delay:.3s"/>
+          <view class="nb-p" aria-hidden="true" style="--x:.3;--y:.3;--delay:.5s"/>
+          <view class="nb-p" aria-hidden="true" style="--x:.7;--y:.1;--delay:.2s"/>
+          <view class="nb-p" aria-hidden="true" style="--x:.1;--y:-.7;--delay:.4s"/>
+          <view class="nb-p" aria-hidden="true" style="--x:.6;--y:.4;--delay:.6s"/>
+        </block>
+        <text class="nb-go" bind:tap="runSearch" aria-role="button" aria-label="执行搜索">搜索</text>
+      </view>
+      <view wx:if="{{!searchOpen}}" class="avatar-btn" hover-class="press-sm" bind:tap="goMine" aria-role="button" aria-label="进入我的主页，有新提醒">林<text class="_i dot" aria-hidden="true"></text></view>
+      <view wx:else class="nb-cancel" bind:tap="cancelSearch" aria-role="button" aria-label="取消搜索">取消</view>
+    </view>
+
+    <!-- 搜索下拉：玻璃弹窗（输入 + 热门搜索） -->
+    <view class="sd-mask {{searchOpen ? 'show' : ''}}" bind:tap="closeSearch" aria-hidden="true"></view>
+    <view class="sd-panel {{searchOpen ? 'show' : ''}}" style="top:{{sdTop}}px" aria-hidden="{{!searchOpen}}" aria-label="搜索面板">
+      <block wx:if="{{!kw}}">
+        <view class="sd-hd"><text class="_b">热门搜索</text><text class="_s">实时</text></view>
+        <view class="sd-chips">
+          <view class="sd-chip" hover-class="press-sm" wx:for="{{hot}}" wx:key="*this" bind:tap="onHot" data-k="{{item}}" aria-role="button" aria-label="搜索热门词：{{item}}">🔥 {{item}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="sd-hd">
+          <text class="_b">“{{kw}}”</text>
+          <view class="sd-hd-actions">
+            <text class="_s">{{count}} 条结果</text>
+            <text class="sd-clear" bind:tap="clearKw" aria-role="button" aria-label="清除搜索关键词">清除</text>
+          </view>
+        </view>
+        <scroll-view scroll-y class="sd-scroll">
+          <view class="sd-sec" wx:if="{{rPosts.length}}"><view class="sd-sec-t">帖子</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rPosts}}" wx:key="title" bind:tap="openPost" aria-role="button" aria-label="打开帖子：{{item.title}}"><view class="sd-r-th" style="background:#FDF3E3;color:#B26A00">帖</view><view><view class="sd-r-t">{{item.title}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view class="sd-sec" wx:if="{{rRes.length}}"><view class="sd-sec-t">资料</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rRes}}" wx:key="name" bind:tap="goRes" data-id="{{item.id}}" aria-role="button" aria-label="查看资料：{{item.name}}"><view class="sd-r-th" style="background:{{item.amber ? '#FFF3DC' : '#DCE9E9'}};color:{{item.amber ? '#B26A00' : '#0F454F'}}">{{item.ext}}</view><view><view class="sd-r-t">{{item.name}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view class="sd-sec" wx:if="{{rCircles.length}}"><view class="sd-sec-t">圈子</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rCircles}}" wx:key="k" bind:tap="goCircleR" data-k="{{item.k}}" aria-role="button" aria-label="进入圈子：{{item.name}}"><view class="sd-r-th" style="background:{{item.bg}};color:#fff">{{item.ch}}</view><view><view class="sd-r-t">{{item.name}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view class="sd-sec" wx:if="{{rUsers.length}}"><view class="sd-sec-t">用户</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rUsers}}" wx:key="name" bind:tap="goUserR" data-name="{{item.name}}" aria-role="button" aria-label="查看用户：{{item.name}}"><view class="sd-r-th" style="background:{{item.bg}};color:{{item.fg}}">{{item.ch}}</view><view><view class="sd-r-t">{{item.name}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view wx:if="{{!count}}" class="sd-empty" aria-role="status">没有找到“{{kw}}”相关内容</view>
+        </scroll-view>
+      </block>
+    </view>
+  </view>
+
+  <view class="ai-strip rise" style="--i:2" hover-class="press" bind:tap="goAI" aria-role="button" aria-label="打开 AI 学伴，示例：数据结构下周考，帮我排一个 3 天复习计划">
+    <view class="ai-top">
+      <view class="ai-mark"><view class="icu-ai" aria-hidden="true"/><text class="ai-label">AI 学伴</text></view>
+      <text class="ai-go" aria-hidden="true">问问 ›</text>
+    </view>
+    <text class="ai-prompt">「数据结构下周考，帮我排一个 3 天复习计划」</text>
+  </view>
+
+  <view class="itabs rise" style="--i:3" aria-role="tablist" aria-label="内容频道">
+    <view wx:for="{{channels}}" wx:key="key" hover-class="press-sm" class="itab {{active === item.key ? 'on' : ''}}" data-c="{{item.key}}" bind:tap="onChannel" aria-role="tab" aria-selected="{{active === item.key}}" aria-label="{{item.key}}，{{item.count}}条">
+      <text>{{item.key}}</text>
+      <text wx:if="{{active === item.key && item.key !== '推荐'}}" class="itab-count" aria-hidden="true">{{item.count}}</text>
+    </view>
+  </view>
+
+  <view class="falls {{hideCls}}">
+    <view wx:if="{{activeCount === 0}}" class="feed-empty" aria-role="status">
+      <text class="feed-empty-t">这个频道还没有内容</text>
+      <text class="feed-empty-s">先看看推荐里的校园新鲜事</text>
+      <view class="feed-empty-act" bind:tap="showRecommend" aria-role="button" aria-label="切换到推荐频道">看推荐</view>
+    </view>
+    <view class="fcard photo rise" style="--i:4" hover-class="card-press" hover-start-time="20" bind:tap="openDetail" aria-role="button" aria-label="查看图文：周五晚霞收容所，286 赞，42 评论">
+      <view class="cover-wrap" aria-hidden="true">
+        <view class="gcover cv-sunset" style="height:220rpx"></view>
+        <text class="badge hot">精华</text>
+      </view>
+      <view class="body"><view class="f-title">周五晚霞收容所｜宿舍楼天台实拍，六点半那场最好看</view>
+      <view class="f-meta"><text class="f-count">286 赞 · 42 评论</text></view></view>
+    </view>
+    <view class="fcard photo rise" style="--i:5" hover-class="card-press" hover-start-time="20" bind:tap="openDetail" aria-role="button" aria-label="查看图文：图书馆三楼自习位实测，94 赞，18 评论">
+      <view class="cover-wrap" aria-hidden="true">
+        <view class="gcover cv-library" style="height:240rpx"></view>
+      </view>
+      <view class="body"><view class="f-title">图书馆三楼自习位实测：几点去还有座？附时刻表</view>
+      <view class="f-meta"><text class="f-count">94 赞 · 18 评论</text></view></view>
+    </view>
+    <view class="fcard qa wide rise" style="--i:6" hover-class="card-press" hover-start-time="20" bind:tap="goQa" data-k="zhuan" aria-role="button" aria-label="查看问答：大一转专业到会计，12 人已答">
+      <view class="w-main">
+        <text class="qtag">求助</text>
+        <view class="f-title">大一转专业到会计，现在准备来得及吗？</view>
+        <view class="f-meta"><text class="f-count">12 人已答 · 等你来</text></view>
+      </view>
+      <view class="w-side"><text class="w-pill ans" aria-hidden="true">查看问答</text></view>
+    </view>
+    <view class="fcard photo rise" style="--i:7" hover-class="card-press" hover-start-time="20" bind:tap="openDetail" aria-role="button" aria-label="查看图文：秋日校园拍照机位地图，402 赞">
+      <view class="cover-wrap" aria-hidden="true">
+        <view class="gcover cv-ginkgo" style="height:200rpx"></view>
+        <text class="badge hot">精华</text>
+      </view>
+      <view class="body"><view class="f-title">秋日校园拍照机位地图：银杏大道已黄透</view>
+      <view class="f-meta"><text class="f-count">402 赞</text></view></view>
+    </view>
+    <view class="fcard photo rise" style="--i:8" hover-class="card-press" hover-start-time="20" bind:tap="openDetail" aria-role="button" aria-label="查看图文：单调栈三连的通用套路，61 赞，9 评论">
+      <view class="cover-wrap" aria-hidden="true">
+        <view class="gcover cv-algo" style="height:224rpx"></view>
+      </view>
+      <view class="body"><view class="f-title">单调栈三连的通用套路：哨兵与边界一次讲透</view>
+      <view class="f-meta"><text class="f-count">61 赞 · 9 评论</text></view></view>
+    </view>
+    <view class="fcard doc wide rise" style="--i:9" hover-class="card-press" hover-start-time="20" bind:tap="goRes" data-id="1" aria-role="button" aria-label="查看资料：数据结构期末复习思维导图，328 次下载">
+      <view class="file-chip" aria-hidden="true">PDF</view>
+      <view class="w-main">
+        <view class="f-title">数据结构期末复习思维导图（含近三年真题标注）</view>
+        <view class="f-meta"><text class="f-count">328 次下载 · v2 · 林青云</text></view>
+      </view>
+      <view class="w-side"><text class="w-pill dl" aria-hidden="true">查看资料</text></view>
+    </view>
+    <view class="fcard chk wide rise" style="--i:9" hover-class="card-press" hover-start-time="20" bind:tap="goChk" data-id="1" aria-role="button" aria-label="查看打卡：每日算法打卡，128 人参加">
+      <view class="chk-ring" aria-hidden="true">
+        <view class="icu-9"/>
+      </view>
+      <view class="w-main">
+        <view class="chk-info"><text class="_b">每日算法打卡</text><text class="_s">128 人 · 已坚持 9 天</text></view>
+        <view class="chk-note">第 9 天：并查集路径压缩终于理顺了…</view>
+      </view>
+      <view class="w-side"><text class="w-pill go" aria-hidden="true">查看打卡</text></view>
+    </view>
+    <view class="fcard qa wide rise" style="--i:9" hover-class="card-press" hover-start-time="20" bind:tap="goQa" data-k="xiandian" aria-role="button" aria-label="查看问答：宿舍限电 800W，38 人已答">
+      <view class="w-main">
+        <text class="qtag">经验</text>
+        <view class="f-title">宿舍限电 800W，台式机到底能不能带？</view>
+        <view class="f-meta"><text class="f-count">38 人已答 · 有可靠回答</text></view>
+      </view>
+      <view class="w-side"><text class="w-pill ans" aria-hidden="true">查看问答</text></view>
+    </view>
+    <view class="fcard doc wide rise" style="--i:9" hover-class="card-press" hover-start-time="20" bind:tap="goRes" data-id="2" aria-role="button" aria-label="查看资料：考研数学一近十年真题，512 次下载">
+      <view class="file-chip" aria-hidden="true" style="background:#FFF3DC;color:#B26A00">XLS</view>
+      <view class="w-main">
+        <view class="f-title">考研数学一近十年真题按知识点分类（含错题统计列）</view>
+        <view class="f-meta"><text class="f-count">512 次下载 · v3 · 郑雨桐</text></view>
+      </view>
+      <view class="w-side"><text class="w-pill dl" aria-hidden="true">查看资料</text></view>
+    </view>
+    <view class="fcard chk wide rise" style="--i:9" hover-class="card-press" hover-start-time="20" bind:tap="goChk" data-id="3" aria-role="button" aria-label="查看打卡：晚跑 5 公里第 4 期，64 人参加">
+      <view class="chk-ring" aria-hidden="true">
+        <view class="icu-10"/>
+      </view>
+      <view class="w-main">
+        <view class="chk-info"><text class="_b">晚跑 5 公里 · 第 4 期</text><text class="_s">64 人 · 陈思远刚打卡</text></view>
+        <view class="chk-note">5.2 公里，配速 5'48''，晚风很给力</view>
+      </view>
+      <view class="w-side"><text class="w-pill go" aria-hidden="true">查看打卡</text></view>
+    </view>
+  </view>
+</view>
+
+<post-detail id="pd" bind:tip="onCompTip"/>
+<tab-bar current="discover"/>
+<view class="toast {{toastShow ? 'show' : ''}}" aria-role="status">{{toastMsg}}</view>

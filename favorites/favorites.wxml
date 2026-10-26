@@ -1,0 +1,16 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">我的收藏</text>
+  </view>
+  <view class="rise" style="--i:1;padding:14px 20px 30px">
+    <view class="feed-row" hover-class="press" wx:for="{{list}}" wx:key="title" bind:tap="openItem" data-kind="{{item.kind}}">
+      <view class="fr-thumb" style="background:{{item.bg}};color:#B26A00;display:flex;align-items:center;justify-content:center;border-radius:12px">{{item.icon}}</view>
+      <view class="fr-info"><text class="_b">{{item.title}}</text><text class="_s">{{item.meta}}</text></view>
+    </view>
+    <view class="cd-empty">收藏的资料与帖子会出现在这里</view>
+  </view>
+</scroll-view>
+
+<post-detail id="pd" bind:tip="onCompTip"/>
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

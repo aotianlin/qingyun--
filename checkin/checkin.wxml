@@ -1,0 +1,63 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">打卡</text>
+  </view>
+
+  <!-- 今日摘要 -->
+  <view class="ck-hero rise" style="--i:1">
+    <view class="ck-num-wrap">
+      <view class="ck-big">{{done}}<text class="ck-slash">/{{total}}</text></view>
+      <view class="ck-cap">今日已打卡</view>
+    </view>
+    <view class="ck-streak">
+      <text class="ck-fire">🔥</text>
+      <view><view class="ck-streak-n">连续 {{streak}} 天</view><view class="ck-streak-s">最长纪录 23 天</view></view>
+    </view>
+  </view>
+
+  <!-- 我的挑战（横滑） -->
+  <view class="sec-title rise" style="--i:2"><text class="_b">我的挑战</text><text class="_s">共 {{mine.length}} 个</text></view>
+  <scroll-view scroll-x class="hscroll rise" style="--i:3">
+    <view class="ck-mine">
+      <view class="ck-mcard {{c.today}}" wx:for="{{mine}}" wx:for-item="c" wx:key="id" hover-class="press" bind:tap="goDetail" data-id="{{c.id}}">
+        <view class="ck-mring icu {{c.ring}}"></view>
+        <view class="ck-mname">{{c.name}}</view>
+        <view class="ck-mnote">{{c.note}}</view>
+        <view class="ck-mact">
+          <text wx:if="{{c.today === 'done'}}" class="ck-state done">✓ 今日已打卡</text>
+          <text wx:elif="{{c.today === 'broke'}}" class="ck-state broke">昨日中断 · 待补卡</text>
+          <view wx:else class="ck-go" hover-class="press-sm" catch:tap="quickCheckin" data-id="{{c.id}}">去打卡</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 全部挑战 -->
+  <view class="sec-title rise" style="--i:4"><text class="_b">全部挑战</text><text class="_s" bind:tap="goCreate">＋ 发起</text></view>
+  <scroll-view scroll-x class="hscroll rise" style="--i:5">
+    <view class="all-chips" style="padding:0 20px 10px">
+      <view hover-class="press-sm" class="chip {{cat === item ? 'on' : ''}}" wx:for="{{cats}}" wx:key="*this" bind:tap="onCat" data-c="{{item}}">{{item}}</view>
+    </view>
+  </scroll-view>
+  <view class="rise" style="--i:6;padding:0 20px 30px">
+    <view class="feed-row" hover-class="press" wx:for="{{all}}" wx:key="id" bind:tap="goDetail" data-id="{{item.id}}">
+      <view class="icu {{item.ring}}" style="flex-shrink:0"/>
+      <view class="fr-info"><text class="_b">{{item.name}}</text><text class="_s">{{item.meta}}</text></view>
+      <text class="w-pill go">打卡</text>
+    </view>
+    <view class="cd-empty" hover-class="press-sm" bind:tap="goCreate">＋ 发起我的第一个挑战</view>
+  </view>
+</scroll-view>
+
+<!-- 打卡成功：丹顶鹤 + 朱砂印章 -->
+<view class="celebrate {{celebrate ? 'show' : ''}}" bind:tap="closeCelebrate">
+  <view class="celebrate-card" catch:tap="noop">
+    <view class="celebrate-crane"/>
+    <view class="celebrate-seal">持</view>
+    <view class="celebrate-t">今日已打卡</view>
+    <view class="celebrate-s">连续 {{streak}} 天 · 平步青云</view>
+  </view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

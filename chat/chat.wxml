@@ -1,0 +1,38 @@
+<view class="chat show chat-page" style="padding-top:{{sb}}px">
+  <view class="chat-head">
+    <view class="chat-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-44"/></view>
+    <view><text class="_b">青云学伴</text><text class="_s">{{sub}} · 可引用站内资料作答</text></view>
+  </view>
+  <scroll-view scroll-y scroll-into-view="{{scrollId}}" class="chat-msgs mp-scroll3">
+    <view class="chat-inner">
+      <view wx:for="{{msgs}}" wx:key="index" id="m{{index}}" class="row {{item.role === 'user' ? 'user' : 'ai'}}">
+        <view wx:if="{{item.role !== 'user'}}" class="row-ava"><view class="icu-ai {{item.typing ? 'think' : ''}}"/></view>
+        <view class="bubble">
+          <view wx:if="{{item.typing}}" class="typing"><text class="_i"></text><text class="_i"></text><text class="_i"></text></view>
+          <block wx:else>
+            <text>{{item.text}}</text>
+            <view wx:if="{{item.plan.length}}" class="plan">
+              <view class="pv" wx:for="{{item.plan}}" wx:for-item="p" wx:key="b"><text class="_b">{{p.b}}</text><text class="_s ps">{{p.s}}</text></view>
+            </view>
+            <text wx:if="{{item.tail}}" class="tail">{{item.tail}}</text>
+            <view wx:if="{{item.cites.length}}" class="cites">
+              <view class="cite" wx:for="{{item.cites}}" wx:for-item="c" wx:key="label"><text class="fi">{{c.fi}}</text>{{c.label}}</view>
+            </view>
+          </block>
+        </view>
+        <view wx:if="{{item.role === 'user'}}" class="row-ava me" style="background:{{me.bg}};color:{{me.fg}}"><image wx:if="{{me.avatarUrl}}" class="row-ava-img" src="{{me.avatarUrl}}" mode="aspectFill"/><text wx:else>{{me.ch}}</text></view>
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-x class="hscroll">
+    <view class="sugs">
+      <view class="sug" hover-class="press-sm" wx:for="{{sugs}}" wx:key="*this" bind:tap="onSug" data-q="{{item}}">{{item}}</view>
+    </view>
+  </scroll-view>
+  <view class="chat-input" style="padding-bottom:{{kbH ? kbH + 'px' : ''}}">
+    <input class="_input" placeholder="{{ph}}" value="{{input}}" bindinput="onInput" confirm-type="send" bindconfirm="onSend" adjust-position="{{false}}" bindkeyboardheightchange="onKb" />
+    <view class="send" hover-class="press-sm" bind:tap="onSend"><view class="icu-28"/></view>
+  </view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

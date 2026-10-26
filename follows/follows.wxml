@@ -1,0 +1,22 @@
+<scroll-view scroll-y class="overlay show in" style="padding-top:{{sb + 6}}px" bindscroll="onPageSc">
+  <view class="mine-nav rise {{navHide ? 'nav-hide' : ''}}" style="--i:0">
+    <view class="mine-back" hover-class="press-sm" bind:tap="goBack"><view class="icu-15"/></view>
+    <text class="_s">关注与粉丝</text>
+  </view>
+  <view class="seg rise" style="--i:1;margin-top:12px">
+    <view class="seg-t {{tab === 'following' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onTab" data-t="following">关注 86</view>
+    <view class="seg-t {{tab === 'followers' ? 'on' : ''}}" hover-class="press-sm" bind:tap="onTab" data-t="followers">粉丝 132</view>
+  </view>
+  <view class="rise" style="--i:2;padding:0 20px 30px">
+    <view class="feed-row" hover-class="press" wx:for="{{rows}}" wx:key="name">
+      <view class="nt-ava" style="background:{{item.bg}};color:{{item.fg}};{{item.border ? 'border:1.5px solid #EDF0EC' : ''}}">{{item.ch}}</view>
+      <view class="fr-info">
+        <view class="fw-name"><text class="_b">{{item.name}}</text><text wx:if="{{item.mutual}}" class="fw-mutual">互相关注</text></view>
+        <text class="_s">{{item.bio}}</text>
+      </view>
+      <view class="fw-btn {{item.following ? 'on' : ''}}" hover-class="press-sm" catch:tap="toggle" data-i="{{index}}">{{item.following ? '已关注' : '+ 关注'}}</view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

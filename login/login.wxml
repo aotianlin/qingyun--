@@ -1,0 +1,44 @@
+<view class="lg-page" style="padding-top:{{sb + 40}}px">
+  <view class="lg-brand rise" style="--i:0">
+    <view class="lg-logo">青</view>
+    <view class="lg-title">青云</view>
+    <view class="lg-slogan">校园学习社区 · 让坚持被看见</view>
+  </view>
+
+  <view class="lg-card rise" style="--i:1">
+    <view class="lg-tabs">
+      <text class="lg-tab {{mode !== 'forgot' ? 'on' : ''}}" bind:tap="switchMode" data-m="login">登录</text>
+      <text class="lg-tab {{mode === 'register' ? 'on' : ''}}" bind:tap="switchMode" data-m="register">注册</text>
+    </view>
+
+    <view class="lg-field">
+      <input class="lg-input" value="{{email}}" bindinput="onEmail" placeholder="邮箱" placeholder-class="form-ph" type="text"/>
+    </view>
+
+    <view wx:if="{{mode === 'register' || mode === 'forgot'}}" class="lg-field lg-code-row">
+      <input class="lg-input" value="{{code}}" bindinput="onCode" placeholder="验证码" placeholder-class="form-ph" type="number"/>
+      <view class="lg-code-btn {{codeBusy ? 'busy' : ''}}" bind:tap="sendCode">{{codeBtn}}</view>
+    </view>
+
+    <view class="lg-field">
+      <input class="lg-input" value="{{password}}" bindinput="onPwd" placeholder="{{mode === 'login' ? '密码' : '设置密码（≥8 位）'}}" placeholder-class="form-ph" password="{{true}}"/>
+    </view>
+
+    <view wx:if="{{mode === 'login'}}" class="lg-aux">
+      <text class="_s" bind:tap="switchMode" data-m="forgot">忘记密码？</text>
+    </view>
+
+    <view class="form-primary lg-submit" hover-class="press-sm" bind:tap="submit">
+      {{mode === 'login' ? '登 录' : (mode === 'register' ? '注 册' : '重置密码')}}
+    </view>
+  </view>
+
+  <view class="lg-wx rise" style="--i:2" hover-class="press-sm" bind:tap="wxLogin">
+    <view class="lg-wx-btn">微</view>
+    <text class="_s">微信一键登录</text>
+  </view>
+
+  <view class="lg-agreement _s rise" style="--i:3">登录即同意《用户协议》与《隐私政策》</view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>

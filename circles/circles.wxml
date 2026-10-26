@@ -1,0 +1,89 @@
+<view class="screen">
+  <view class="page-head rise sd-host" style="--i:0;padding-top:{{sb + 4}}px">
+    <view class="head-row">
+      <view><view class="greet-sub">已加入 3 个圈子</view><view class="greet-title _h1">我的圈子</view></view>
+    </view>
+    <view class="head-tools">
+      <view wx:if="{{!searchOpen}}" class="nebula" hover-class="press-sm" bind:tap="openSearch">
+        <view class="nb-in nb-static"><text class="nb-label">搜圈子 · 找组织</text></view>
+      </view>
+      <view wx:else class="nebula on nb-live">
+        <input class="nb-in" value="{{q}}" bindinput="onSearch" bindconfirm="onSearch" confirm-type="search" bindfocus="onNbF" bindblur="onNbB" placeholder="搜圈子 · 找组织" placeholder-class="nb-ph2"/>
+        <block wx:if="{{sdFocus}}">
+          <view class="nb-p" style="--x:.2;--y:-.4;--delay:.1s"/>
+          <view class="nb-p" style="--x:.5;--y:-.2;--delay:.3s"/>
+          <view class="nb-p" style="--x:.3;--y:.3;--delay:.5s"/>
+          <view class="nb-p" style="--x:.7;--y:.1;--delay:.2s"/>
+          <view class="nb-p" style="--x:.1;--y:-.7;--delay:.4s"/>
+          <view class="nb-p" style="--x:.6;--y:.4;--delay:.6s"/>
+        </block>
+      </view>
+    </view>
+  </view>
+
+    <view class="sd-mask {{searchOpen ? 'show' : ''}}" bind:tap="closeSearch"></view>
+    <view class="sd-panel {{searchOpen ? 'show' : ''}}" style="top:{{sdTop}}px">
+      <block wx:if="{{!kw}}">
+        <view class="sd-hd"><text class="_b">热门搜索</text><text class="_s">实时</text></view>
+        <view class="sd-chips">
+          <view class="sd-chip" hover-class="press-sm" wx:for="{{sdHot}}" wx:key="*this" bind:tap="onHot" data-k="{{item}}">🔥 {{item}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="sd-hd"><text class="_b">“{{kw}}”</text><text class="_s">{{count}} 条结果</text></view>
+        <scroll-view scroll-y class="sd-scroll">
+          <view class="sd-sec" wx:if="{{rCircles.length}}"><view class="sd-sec-t">圈子</view>
+            <view class="sd-r" hover-class="press" wx:for="{{rCircles}}" wx:key="k" bind:tap="openCircle" data-k="{{item.k}}"><view class="sd-r-th" style="background:{{item.bg}};color:#fff">{{item.ch}}</view><view><view class="sd-r-t">{{item.name}}</view><view class="sd-r-m">{{item.meta}}</view></view></view>
+          </view>
+          <view wx:if="{{!count}}" class="sd-empty">没有找到“{{kw}}”相关内容</view>
+        </scroll-view>
+      </block>
+    </view>
+
+  <scroll-view scroll-x class="hscroll rise" style="--i:1">
+    <view class="my-circles">
+      <view class="mc" hover-class="press-sm" bind:tap="openCircle" data-k="algo"><view class="cc" style="background:#175A67;color:#fff">算</view><view class="_p">算法自习室</view><text class="_i dot"></text></view>
+      <view class="mc" hover-class="press-sm" bind:tap="openCircle" data-k="kaoyan"><view class="cc" style="background:#DCE9E9;color:#0F454F">考</view><view class="_p">考研自习联盟</view></view>
+      <view class="mc" hover-class="press-sm" bind:tap="openCircle" data-k="lunwen"><view class="cc" style="background:#FFF3DC;color:#B26A00">论</view><view class="_p">论文互助圈</view></view>
+            <view class="mc" hover-class="press-sm" bind:tap="goCreate"><view class="cc" style="background:#fff;border:1.5px dashed #175A67;color:#0F454F">＋</view><view class="_p">建圈子</view></view>
+      <view class="mc" hover-class="press-sm" bind:tap="openAll"><view class="cc" style="background:#fff;border:1.5px dashed #B9C4BD;color:#93A29A">＋</view><view class="_p">发现更多</view></view>
+    </view>
+  </scroll-view>
+
+  <view class="sec-title rise" style="--i:2"><text class="_b">本周热门圈子</text><text class="_s">换一批</text></view>
+  <scroll-view scroll-x class="hscroll rise" style="--i:3">
+    <view class="hot-circles">
+      <view class="hcard" hover-class="press" wx:for="{{hot}}" wx:key="k" bind:tap="openCircle" data-k="{{item.k}}">
+        <view class="hc-cover" style="background:{{item.cover}}">{{item.name}}</view>
+        <view class="hc-body">
+          <view class="_p">{{item.desc}}</view>
+          <view class="hc-meta">
+            <text class="_s">{{item.stat}}</text>
+            <view class="join-pill {{item.joined ? 'joined' : ''}}" hover-class="press-sm" catch:tap="{{item.joined ? 'cdTab' : 'toggleJoin'}}" data-k="{{item.k}}">{{item.joined ? "已加入" : "加入"}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="sec-title rise" style="--i:4"><text class="_b">圈内动态</text><text class="_s">全部</text></view>
+  <view class="feed-row rise" style="--i:5" hover-class="press" bind:tap="openDetail">
+    <view class="fr-thumb" style="background:#EDF2EE;display:flex;align-items:center;justify-content:center"><view class="icu-11"/></view>
+    <view class="fr-info"><text class="_b">单调栈三连的通用套路</text><text class="_s">林青云 · 算法自习室 · 2 小时前</text></view>
+    <text class="circle-tag">题解</text>
+  </view>
+  <view class="feed-row rise" style="--i:6" hover-class="press" bind:tap="openRes">
+    <view class="fr-thumb" style="background:#FFF3DC;color:#B26A00;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;border-radius:12px">MD</view>
+    <view class="fr-info"><text class="_b">审计第三章错题清单（17 题）</text><text class="_s">郑雨桐 · CPA 备考小组 · 昨天</text></view>
+    <text class="circle-tag">资料</text>
+  </view>
+  <view class="feed-row rise" style="--i:7" hover-class="press" bind:tap="openDetail">
+    <view class="fr-thumb" style="background:#DCE9E9;color:#0F454F;display:flex;align-items:center;justify-content:center;font-size:15px;border-radius:12px">阅</view>
+    <view class="fr-info"><text class="_b">读书会预告：卷积神经网络</text><text class="_s">王立 · 机器学习读书会 · 昨天</text></view>
+    <text class="circle-tag">预告</text>
+  </view>
+</view>
+
+<post-detail id="pd" bind:tip="onCompTip"/>
+<tab-bar current="circles"/>
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>
