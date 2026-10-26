@@ -1,0 +1,78 @@
+<page-container show="{{show}}" position="bottom" overlay duration="260" bindafterleave="onAfterLeave">
+  <!-- 吸顶栏：头图区透明 → 滚过头图后翻磨砂底 + 墨色标题；顶部留出状态栏 -->
+  <view class="d-bar {{scrolled ? 'solid' : ''}}" style="padding-top:{{sb}}px">
+    <view class="d-close" hover-class="press-sm" bind:tap="close"><view class="icu-37"/></view>
+    <view class="d-bar-title">周五晚霞收容所｜宿舍楼天台实拍，六点半那一场最好看</view>
+  </view>
+  <scroll-view scroll-y enhanced show-scrollbar="{{false}}" class="pc-body" bindscroll="onScroll">
+    <view class="gcover cv-sunset d-hero"></view>
+    <view class="d-body">
+      <view class="d-tags" style="margin-top:0">
+        <text class="d-tag">精华</text><text class="d-tag">摄影</text>
+      </view>
+      <view class="_h1">周五晚霞收容所｜宿舍楼天台实拍，六点半那一场最好看</view>
+      <view class="d-author">
+        <view class="av" bind:tap="openAuthor">周</view>
+        <view class="d-author-main"><text class="_b" bind:tap="openAuthor">周晓</text><text class="_s">艺术学院 · 视觉传达 · 14 小时前</text></view>
+        <view class="d-dm" hover-class="press-sm" bind:tap="dmAuthor">私信</view>
+      </view>
+      <view class="_p">宿舍楼天台拍到的晚霞，六点半那一场最好看，胶片直出无修。蹲了一个星期才等到这卷云。</view>
+      <view class="_p" style="margin-top:20rpx">机位在 6 号楼天台西侧，下周一还有一波，想拍的的同学可以约……</view>
+      <view class="d-tags">
+        <text class="d-tag">摄影</text><text class="d-tag">晚霞</text><text class="d-tag">机位</text>
+      </view>
+      <view class="d-comments">
+        <view class="dc-head"><text class="_b">评论</text><text class="dc-count">{{commentTotal}} 条</text></view>
+        <view class="dc-item" wx:for="{{comments}}" wx:key="index">
+          <view class="av" style="background:{{item.bg}};color:{{item.fg}}" bind:tap="openUser" data-name="{{item.name}}">{{item.ch}}</view>
+          <view class="dc-main">
+            <view class="dc-top">
+              <text class="_b" bind:tap="openUser" data-name="{{item.name}}">{{item.name}}</text>
+              <view class="dc-right">
+                <text class="dc-reply" catch:tap="replyTo" data-name="{{item.name}}">回复</text>
+                <view class="dc-like {{item.liked ? 'on' : ''}}" catch:tap="likeComment" data-index="{{index}}" aria-role="button" aria-label="点赞评论">
+                  <view class="heart sm {{item.liked ? 'on' : ''}}">
+                    <view class="h-o"/>
+                    <view wx:if="{{item.liked}}" class="h-f"/>
+                    <block wx:if="{{item.liked}}"><view class="hp hp1"/><view class="hp hp2"/><view class="hp hp3"/><view class="hp hp4"/><view class="hp hp5"/><view class="hp hp6"/></block>
+                  </view>
+                  <text wx:if="{{item.likeNum}}" class="dc-like-num">{{item.likeNum}}</text>
+                </view>
+                <text class="_t">{{item.t}}</text>
+              </view>
+            </view>
+            <view class="_p"><text wx:if="{{item.to}}" class="dc-to">回复 @{{item.to}}：</text>{{item.text}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="d-actions" style="padding-bottom:{{kbH ? kbH + 'px' : ''}}">
+    <view class="d-acts">
+      <view class="d-act {{liked ? 'on' : ''}}" bind:tap="toggleLike">
+        <view class="heart {{liked ? 'on' : ''}}">
+          <view class="h-o"/>
+          <view wx:if="{{liked}}" class="h-f"/>
+          <block wx:if="{{liked}}"><view class="hp hp1"/><view class="hp hp2"/><view class="hp hp3"/><view class="hp hp4"/><view class="hp hp5"/><view class="hp hp6"/></block>
+        </view>
+        <text class="d-num {{likePop ? 'pop' : ''}}">{{likeNum}}</text>
+      </view>
+      <view class="d-act {{faved ? 'on' : ''}}" bind:tap="toggleFav">
+        <view class="star {{faved ? 'on' : ''}}">
+        <view class="s-o"/>
+        <view class="s-f {{faved ? 'in' : 'out'}}"/>
+        <block wx:if="{{faved}}"><view class="sp sp1"/><view class="sp sp2"/><view class="sp sp3"/><view class="sp sp4"/><view class="sp sp5"/><view class="sp sp6"/><view class="sp sp7"/><view class="sp sp8"/></block>
+      </view>
+        <text class="d-num">{{faved ? '已收藏' : '收藏'}}</text>
+      </view>
+      <view class="d-act" bind:tap="share">
+        <view class="icu-41"/>
+        <text class="d-num">转发</text>
+      </view>
+    </view>
+    <view class="d-input-row">
+      <input class="d-input" value="{{draft}}" bindinput="onDraft" bindconfirm="sendComment" confirm-type="send" focus="{{focusComment}}" placeholder="{{replyTo ? '回复 @' + replyTo : '说点什么…'}}" placeholder-class="d-ph" cursor-spacing="16" adjust-position="{{false}}" bindkeyboardheightchange="onKb"/>
+      <view class="d-send {{draft ? '' : 'disabled'}}" hover-class="press-sm" bind:tap="sendComment">发送</view>
+    </view>
+  </view>
+</page-container>

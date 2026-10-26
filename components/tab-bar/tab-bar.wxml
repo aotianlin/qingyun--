@@ -1,0 +1,45 @@
+<nav class="tabbar" aria-label="主导航">
+  <view class="tab {{current === 'discover' ? 'on' : ''}}" hover-class="none" data-p="discover" bind:tap="goTab" aria-role="tab" aria-selected="{{current === 'discover'}}" aria-label="{{current === 'discover' ? '发现，当前页' : '发现'}}">
+    <view class="icu-29" aria-hidden="true"/>发现
+  </view>
+  <view class="tab {{current === 'circles' ? 'on' : ''}}" data-p="circles" bind:tap="goTab" aria-role="tab" aria-selected="{{current === 'circles'}}" aria-label="{{current === 'circles' ? '圈子，当前页' : '圈子'}}">
+    <view class="icu-30" aria-hidden="true"/>圈子
+  </view>
+  <view class="fab-center" bind:tap="openSheet" aria-role="button" aria-label="发布内容">
+        <view class="fab-btn" hover-class="press-fab" aria-hidden="true"><view class="icu-31"/></view>
+  </view>
+  <view class="tab {{current === 'messages' ? 'on' : ''}}" data-p="messages" bind:tap="goTab" aria-role="tab" aria-selected="{{current === 'messages'}}" aria-label="{{current === 'messages' ? '消息，当前页，有未读消息' : '消息，有未读消息'}}">
+    <view class="icu-32" aria-hidden="true"/>消息<i class="_i tdot" aria-hidden="true"></i>
+  </view>
+  <view class="tab {{current === 'ai' ? 'on' : ''}}" data-p="ai" bind:tap="goTab" aria-role="tab" aria-selected="{{current === 'ai'}}" aria-label="{{current === 'ai' ? '学伴，当前页' : '学伴'}}">
+    <view class="icu-33" aria-hidden="true"/>学伴
+  </view>
+</nav>
+
+<view class="mask {{sheetOpen ? 'show' : ''}}" bind:tap="closeSheet" aria-hidden="true"></view>
+<view class="sheet {{sheetOpen ? 'show' : ''}}" catch:touchmove="noop" aria-hidden="{{!sheetOpen}}" aria-role="dialog" aria-label="发布到青云">
+  <view class="handle" aria-hidden="true"></view>
+  <view class="_h3">发布到青云</view>
+  <view class="sub">选择内容类型，同步到你加入的圈子</view>
+  <view class="pub-grid">
+    <view class="pub" hover-class="press" bind:tap="pub" data-t="post" aria-role="button" aria-label="发动态，照片、话题、选圈子同步">
+      <view class="pi" style="background:#DCE9E9" aria-hidden="true"><view class="icu-34"/></view>
+      <view><text class="_b">发动态</text><text class="_s">照片 · 话题 · 选圈子同步</text></view>
+    </view>
+    <view class="pub" hover-class="press" bind:tap="pub" data-t="qa" aria-role="button" aria-label="提问题，求助、经验、可悬赏校园币">
+      <view class="pi" style="background:#4353D9" aria-hidden="true"><text class="_s" style="color:#fff;font-weight:800;font-size:31rpx">？</text></view>
+      <view><text class="_b">提问题</text><text class="_s">求助 · 经验 · 可悬赏校园币</text></view>
+    </view>
+    <view class="pub" hover-class="press" bind:tap="pub" data-t="res" aria-role="button" aria-label="传资料，讲义、真题、自动归入课程">
+      <view class="pi" style="background:#FFF3DC" aria-hidden="true"><view class="icu-35"/></view>
+      <view><text class="_b">传资料</text><text class="_s">讲义 · 真题 · 自动归入课程</text></view>
+    </view>
+    <view class="pub" hover-class="press" bind:tap="pub" data-t="chk" aria-role="button" aria-label="去打卡，每日算法、考研词汇、晚跑">
+      <view class="pi" style="background:#DCE9E9" aria-hidden="true"><view class="icu-36"/></view>
+      <view><text class="_b">去打卡</text><text class="_s">每日算法 · 考研词汇 · 晚跑</text></view>
+    </view>
+  </view>
+  <view class="note">内容同步到对应圈子 · 请遵守校园社区公约</view>
+</view>
+
+<view class="toast {{toastShow ? 'show' : ''}}">{{toastMsg}}</view>
